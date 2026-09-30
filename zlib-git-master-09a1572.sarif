@@ -1,0 +1,3240 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "informationUri": "https://svacer.ispras.ru/mediawiki",
+          "name": "Svacer",
+          "rules": [
+            {
+              "id": "SvEng.CXX.BUFFER_OVERLAP/SvEng.BO.65",
+              "name": "BUFFER_OVERLAP",
+              "shortDescription": {
+                "text": "BUFFER_OVERLAP"
+              },
+              "properties": {
+                "cwe": [
+                  {
+                    "description": "A stack-based buffer overflow condition is a condition where the buffer being overwritten is allocated on the stack (i.e., is a local variable or, rarely, a parameter to a function).",
+                    "name": "121"
+                  },
+                  {
+                    "description": "A heap overflow condition is a buffer overflow, where the buffer that can be overwritten is allocated in the heap portion of memory, generally meaning that the buffer was allocated using a routine such as malloc().",
+                    "name": "122"
+                  },
+                  {
+                    "description": "The behavior of this function is undefined unless its control parameter is set to a specific value.",
+                    "name": "475"
+                  }
+                ],
+                "lang": "CXX",
+                "mtid": "SvEng.BO.65",
+                "origin": "builtin",
+                "reliability": "Low",
+                "severity": "Critical",
+                "svacer_checker_id": "BUFFER_OVERLAP",
+                "tool": "SvEng",
+                "warnClass": "BUFFER_OVERLAP"
+              }
+            },
+            {
+              "id": "SvEng.CXX.DEREF_AFTER_FREE/SvEng.UF.2",
+              "name": "DEREF_AFTER_FREE",
+              "shortDescription": {
+                "text": "DEREF_AFTER_FREE"
+              },
+              "properties": {
+                "cwe": [
+                  {
+                    "description": "The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+                    "name": "415"
+                  },
+                  {
+                    "description": "The product reuses or references memory after it has been freed. At some point afterward, the memory may be allocated again and saved in another pointer, while the original pointer references a location somewhere within the new allocation. Any operations using the original pointer are no longer valid because the memory \"belongs\" to the code that operates on the new pointer.",
+                    "name": "416"
+                  },
+                  {
+                    "description": "The product uses, accesses, or otherwise operates on a resource after that resource has been expired, released, or revoked.",
+                    "name": "672"
+                  }
+                ],
+                "lang": "CXX",
+                "mtid": "SvEng.UF.2",
+                "origin": "builtin",
+                "reliability": "Average",
+                "severity": "Critical",
+                "svacer_checker_id": "DEREF_AFTER_FREE",
+                "tool": "SvEng",
+                "warnClass": "DEREF_AFTER_FREE"
+              }
+            },
+            {
+              "id": "SvEng.CXX.DEREF_OF_NULL.EX/SvEng.ND.6",
+              "name": "DEREF_OF_NULL.EX",
+              "shortDescription": {
+                "text": "DEREF_OF_NULL.EX"
+              },
+              "properties": {
+                "cwe": [
+                  {
+                    "description": "The product dereferences a pointer that it expects to be valid but is NULL.",
+                    "name": "476"
+                  }
+                ],
+                "lang": "CXX",
+                "mtid": "SvEng.ND.6",
+                "origin": "builtin",
+                "reliability": "Average",
+                "severity": "Critical",
+                "svacer_checker_id": "DEREF_OF_NULL.EX",
+                "tool": "SvEng",
+                "warnClass": "DEREF_OF_NULL.EX"
+              }
+            },
+            {
+              "id": "CSA.CXX.DIVISION_BY_ZERO/CSA.DIVISION_BY_ZERO.1",
+              "name": "DIVISION_BY_ZERO",
+              "shortDescription": {
+                "text": "DIVISION_BY_ZERO"
+              },
+              "properties": {
+                "cwe": [
+                  {
+                    "description": "The product divides a value by zero.",
+                    "name": "369"
+                  }
+                ],
+                "lang": "CXX",
+                "mtid": "CSA.DIVISION_BY_ZERO.1",
+                "origin": "builtin",
+                "reliability": "Low",
+                "severity": "Major",
+                "svacer_checker_id": "DIVISION_BY_ZERO",
+                "tool": "CSA",
+                "warnClass": "DIVISION_BY_ZERO"
+              }
+            },
+            {
+              "id": "SvEng.CXX.DOUBLE_CLOSE/SvEng.UR.7",
+              "name": "DOUBLE_CLOSE",
+              "shortDescription": {
+                "text": "DOUBLE_CLOSE"
+              },
+              "properties": {
+                "cwe": [
+                  {
+                    "description": "The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+                    "name": "415"
+                  },
+                  {
+                    "description": "The product reuses or references memory after it has been freed. At some point afterward, the memory may be allocated again and saved in another pointer, while the original pointer references a location somewhere within the new allocation. Any operations using the original pointer are no longer valid because the memory \"belongs\" to the code that operates on the new pointer.",
+                    "name": "416"
+                  },
+                  {
+                    "description": "The product uses, accesses, or otherwise operates on a resource after that resource has been expired, released, or revoked.",
+                    "name": "672"
+                  },
+                  {
+                    "description": "The product performs the same operation on a resource two or more times, when the operation should only be applied once.",
+                    "name": "675"
+                  }
+                ],
+                "lang": "CXX",
+                "mtid": "SvEng.UR.7",
+                "origin": "builtin",
+                "reliability": "Average",
+                "severity": "Normal",
+                "svacer_checker_id": "DOUBLE_CLOSE",
+                "tool": "SvEng",
+                "warnClass": "DOUBLE_CLOSE"
+              }
+            },
+            {
+              "id": "SvEng.CXX.PASS_TO_PROC_AFTER_CHECK/SvEng.NE.37",
+              "name": "PASS_TO_PROC_AFTER_CHECK",
+              "shortDescription": {
+                "text": "PASS_TO_PROC_AFTER_CHECK"
+              },
+              "properties": {
+                "cwe": [
+                  {
+                    "description": "The product uses untrusted input when calculating or using an array index, but the product does not validate or incorrectly validates the index to ensure the index references a valid position within the array.",
+                    "name": "129"
+                  },
+                  {
+                    "description": "The product does not properly check when a function or operation returns a value that is legitimate for the function, but is not expected by the product.",
+                    "name": "394"
+                  },
+                  {
+                    "description": "The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping.",
+                    "name": "606"
+                  }
+                ],
+                "lang": "CXX",
+                "mtid": "SvEng.NE.37",
+                "origin": "builtin",
+                "reliability": "High",
+                "severity": "Normal",
+                "svacer_checker_id": "PASS_TO_PROC_AFTER_CHECK",
+                "tool": "SvEng",
+                "warnClass": "PASS_TO_PROC_AFTER_CHECK"
+              }
+            },
+            {
+              "id": "SvEng.CXX.PROC_USE.VULNERABLE/SvEng.L.1",
+              "name": "PROC_USE.VULNERABLE",
+              "shortDescription": {
+                "text": "PROC_USE.VULNERABLE"
+              },
+              "properties": {
+                "cwe": [
+                  {
+                    "description": "The product calls a function that can never be guaranteed to work safely.",
+                    "name": "242"
+                  }
+                ],
+                "lang": "CXX",
+                "mtid": "SvEng.L.1",
+                "origin": "builtin",
+                "reliability": "High",
+                "severity": "Minor",
+                "svacer_checker_id": "PROC_USE.VULNERABLE",
+                "tool": "SvEng",
+                "warnClass": "PROC_USE.VULNERABLE"
+              }
+            },
+            {
+              "id": "SvEng.CXX.UNCHECKED_FUNC_RES.LIB.STRICT/SvEng.UNC.16",
+              "name": "UNCHECKED_FUNC_RES.LIB.STRICT",
+              "shortDescription": {
+                "text": "UNCHECKED_FUNC_RES.LIB.STRICT"
+              },
+              "properties": {
+                "cwe": [
+                  {
+                    "description": "The product does not check the return value from a method or function, which can prevent it from detecting unexpected states and conditions.",
+                    "name": "252"
+                  },
+                  {
+                    "description": "The product does not check or incorrectly checks for unusual or exceptional conditions that are not expected to occur frequently during day to day operation of the product.",
+                    "name": "754"
+                  }
+                ],
+                "lang": "CXX",
+                "mtid": "SvEng.UNC.16",
+                "origin": "builtin",
+                "reliability": "VeryHigh",
+                "severity": "Minor",
+                "svacer_checker_id": "UNCHECKED_FUNC_RES.LIB.STRICT",
+                "tool": "SvEng",
+                "warnClass": "UNCHECKED_FUNC_RES.LIB.STRICT"
+              }
+            },
+            {
+              "id": "SvEng.CXX.UNCHECKED_FUNC_RES.STAT/SvEng.UNC.20",
+              "name": "UNCHECKED_FUNC_RES.STAT",
+              "shortDescription": {
+                "text": "UNCHECKED_FUNC_RES.STAT"
+              },
+              "properties": {
+                "cwe": [
+                  {
+                    "description": "The product does not check the return value from a method or function, which can prevent it from detecting unexpected states and conditions.",
+                    "name": "252"
+                  },
+                  {
+                    "description": "The product does not check or incorrectly checks for unusual or exceptional conditions that are not expected to occur frequently during day to day operation of the product.",
+                    "name": "754"
+                  }
+                ],
+                "lang": "CXX",
+                "mtid": "SvEng.UNC.20",
+                "origin": "builtin",
+                "reliability": "High",
+                "severity": "Normal",
+                "svacer_checker_id": "UNCHECKED_FUNC_RES.STAT",
+                "tool": "SvEng",
+                "warnClass": "UNCHECKED_FUNC_RES.STAT"
+              }
+            },
+            {
+              "id": "SvEng.CXX.USE_AFTER_FREE/SvEng.UF.1",
+              "name": "USE_AFTER_FREE",
+              "shortDescription": {
+                "text": "USE_AFTER_FREE"
+              },
+              "properties": {
+                "cwe": [
+                  {
+                    "description": "The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+                    "name": "415"
+                  },
+                  {
+                    "description": "The product reuses or references memory after it has been freed. At some point afterward, the memory may be allocated again and saved in another pointer, while the original pointer references a location somewhere within the new allocation. Any operations using the original pointer are no longer valid because the memory \"belongs\" to the code that operates on the new pointer.",
+                    "name": "416"
+                  }
+                ],
+                "lang": "CXX",
+                "mtid": "SvEng.UF.1",
+                "origin": "builtin",
+                "reliability": "Average",
+                "severity": "Critical",
+                "svacer_checker_id": "USE_AFTER_FREE",
+                "tool": "SvEng",
+                "warnClass": "USE_AFTER_FREE"
+              }
+            }
+          ],
+          "version": "11-2-0.2025-07-22@04:47:28.f1247f21"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "/.build/deflate.c"
+          },
+          "length": 0,
+          "contents": {
+            "text": ""
+          }
+        },
+        {
+          "location": {
+            "uri": "/.build/gzlib.c"
+          },
+          "length": 0,
+          "contents": {
+            "text": ""
+          }
+        },
+        {
+          "location": {
+            "uri": "/.build/gzread.c"
+          },
+          "length": 0,
+          "contents": {
+            "text": ""
+          }
+        },
+        {
+          "location": {
+            "uri": "/.build/gzwrite.c"
+          },
+          "length": 0,
+          "contents": {
+            "text": ""
+          }
+        },
+        {
+          "location": {
+            "uri": "/.build/inftrees.c"
+          },
+          "length": 0,
+          "contents": {
+            "text": ""
+          }
+        },
+        {
+          "location": {
+            "uri": "/.build/test/example.c"
+          },
+          "length": 0,
+          "contents": {
+            "text": ""
+          }
+        },
+        {
+          "location": {
+            "uri": "/.build/test/minigzip.c"
+          },
+          "length": 0,
+          "contents": {
+            "text": ""
+          }
+        }
+      ],
+      "results": [
+        {
+          "ruleId": "SvEng.CXX.BUFFER_OVERLAP/SvEng.BO.65",
+          "ruleIndex": 0,
+          "kind": "notApplicable",
+          "level": "error",
+          "message": {
+            "text": "Memory areas of 'memcpy' function arguments '(*s-\u003ewindow)[wsize]' and 's-\u003ewindow' are overlapping at deflate.c:287. Consider using 'memmove' function instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/deflate.c",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 287,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "fill_window",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "7P6Pei16cq9IlDbvpqZ5WQ"
+          },
+          "partialFingerprints": {
+            "details": "b17829f46421a9bd763acfc31fb7f63ae45768b3"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/deflate.c"
+                          },
+                          "region": {
+                            "startLine": 287,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "function call"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Low",
+            "checker_severity": "Critical",
+            "comments": [
+              {
+                "text": "Перекрытия не происходит - память копируется со сдвигом wsize в количестве (wsize - more) байтов, где more \u003e= 0.",
+                "createdBy": "d.kaluh",
+                "createTs": "2026-02-02T10:26:10.39938Z"
+              }
+            ],
+            "details": "b17829f46421a9bd763acfc31fb7f63ae45768b3",
+            "invariant": "7P6Pei16cq9IlDbvpqZ5WQ",
+            "lang": "CXX",
+            "mtid": "SvEng.BO.65",
+            "origFunc": "fill_window",
+            "review_ts": "2026-02-02T10:25:06Z",
+            "reviewed_by": "d.kaluh",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "BUFFER_OVERLAP"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.BUFFER_OVERLAP/SvEng.BO.65",
+          "ruleIndex": 0,
+          "kind": "notApplicable",
+          "level": "error",
+          "message": {
+            "text": "Memory areas of 'memcpy' function arguments '(*s-\u003ewindow)[s-\u003ew_size]' and 's-\u003ewindow' are overlapping at deflate.c:1774. Consider using 'memmove' function instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/deflate.c",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 1774,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "deflate_stored",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "eo3cL51uYoT3HC29ExoP3A"
+          },
+          "partialFingerprints": {
+            "details": "44f65d349fca4d2d47ec144ff5fd25682b9ffba1"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/deflate.c"
+                          },
+                          "region": {
+                            "startLine": 1774,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "function call"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Low",
+            "checker_severity": "Critical",
+            "comments": [
+              {
+                "text": "buffer overlap не происходит, так как реализация zmemcpy(dest, src, size), принимает size = s-\u003estrstart - s-\u003ew_size и копирует побайтно во внтуренней реализации. Таким образом, хоть это и один буфер, но ни в какой момент при сохранении внутреннего инварианта не происходит пересечения.",
+                "createdBy": "p.gubanov",
+                "createTs": "2026-03-05T15:44:35.941077Z"
+              }
+            ],
+            "details": "44f65d349fca4d2d47ec144ff5fd25682b9ffba1",
+            "invariant": "eo3cL51uYoT3HC29ExoP3A",
+            "lang": "CXX",
+            "mtid": "SvEng.BO.65",
+            "origFunc": "deflate_stored",
+            "review_ts": "2026-03-05T15:41:52Z",
+            "reviewed_by": "p.gubanov",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "BUFFER_OVERLAP"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.BUFFER_OVERLAP/SvEng.BO.65",
+          "ruleIndex": 0,
+          "kind": "notApplicable",
+          "level": "error",
+          "message": {
+            "text": "Memory areas of 'memcpy' function arguments '(*s-\u003ewindow)[s-\u003ew_size]' and 's-\u003ewindow' are overlapping at deflate.c:1806. Consider using 'memmove' function instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/deflate.c",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 1806,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "deflate_stored",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "YCnVZZ/WA21hfIgJ/Hrsag"
+          },
+          "partialFingerprints": {
+            "details": "44f65d349fca4d2d47ec144ff5fd25682b9ffba1"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/deflate.c"
+                          },
+                          "region": {
+                            "startLine": 1806,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "function call"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Low",
+            "checker_severity": "Critical",
+            "comments": [
+              {
+                "text": "buffer overlap не происходит, так как реализация zmemcpy(dest, src, size), принимает size = s-\u003estrstart - s-\u003ew_size и копирует побайтно во внтуренней реализации. Таким образом, хоть это и один буфер, но ни в какой момент при сохранении внутреннего инварианта не происходит пересечения.",
+                "createdBy": "p.gubanov",
+                "createTs": "2026-03-05T15:44:50.10934Z"
+              }
+            ],
+            "details": "44f65d349fca4d2d47ec144ff5fd25682b9ffba1",
+            "invariant": "YCnVZZ/WA21hfIgJ/Hrsag",
+            "lang": "CXX",
+            "mtid": "SvEng.BO.65",
+            "origFunc": "deflate_stored",
+            "review_ts": "2026-03-05T15:44:46Z",
+            "reviewed_by": "p.gubanov",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "BUFFER_OVERLAP"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.DEREF_AFTER_FREE/SvEng.UF.2",
+          "ruleIndex": 1,
+          "kind": "notApplicable",
+          "level": "error",
+          "message": {
+            "text": "Pointer '\u0026src[-1]' is dereferenced at gzread.c:554 after the referenced memory was deallocated at gzread.c:517 by calling function 'gz_look'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/gzread.c",
+                  "index": 2
+                },
+                "region": {
+                  "startLine": 554,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "gzungetc",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "Z9FkXECFIKZHcnIN78fdfA"
+          },
+          "partialFingerprints": {
+            "details": "0c719c7ac3340823b9658594920e890527882a1a"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "dereference"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 554,
+                            "startColumn": 23
+                          }
+                        },
+                        "message": {
+                          "text": "Dereference"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "dereference"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "free"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 517,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "Call of 'gz_look'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 29
+                          }
+                        },
+                        "message": {
+                          "text": "Definition of 'gz_look'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 100,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Assign 'state-\u003eout' to '*state-\u003eout'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Variable 'state-\u003eout' is passed to function 'free' as 1st parameter"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "free"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "assign"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 550,
+                            "startColumn": 24
+                          }
+                        },
+                        "message": {
+                          "text": "assign"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 526,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "assign"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "assign"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Average",
+            "checker_severity": "Critical",
+            "comments": [
+              {
+                "text": "В ветке исполнения gz_look(state), при которой вызывается free(state-\u003eout) так же происходит вызов функции gz_error(state, Z_MEM_ERROR, \"out of memory\"), который устанавливает state-\u003eerr = Z_MEM_ERROR, что в следующей проверке проверяется условием (state-\u003emode != GZ_READ) || (state-\u003eerr != Z_OK \u0026\u0026 state-\u003eerr != Z_BUFF_ERROR), что приводит к вызову return -1 и исполнение дальнейшего кода, найденного статанализатором не происходит",
+                "createdBy": "p.gubanov",
+                "createTs": "2026-03-05T16:16:20.124931Z"
+              }
+            ],
+            "details": "0c719c7ac3340823b9658594920e890527882a1a",
+            "invariant": "Z9FkXECFIKZHcnIN78fdfA",
+            "lang": "CXX",
+            "mtid": "SvEng.UF.2",
+            "origFunc": "gzungetc",
+            "review_ts": "2026-03-05T16:13:32Z",
+            "reviewed_by": "p.gubanov",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "DEREF_AFTER_FREE"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.DEREF_OF_NULL.EX/SvEng.ND.6",
+          "ruleIndex": 2,
+          "kind": "notApplicable",
+          "level": "error",
+          "message": {
+            "text": "After having been assigned to a NULL value at inftrees.c:64, pointer '\u0026base[work[sym] - match]' is dereferenced at inftrees.c:230."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/inftrees.c",
+                  "index": 4
+                },
+                "region": {
+                  "startLine": 230,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "inflate_table",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "vMC8HinRrw+X+QvYER7gTA"
+          },
+          "partialFingerprints": {
+            "details": "60cbff7e97549f7715048212a922009a01a74895"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "dereference"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/inftrees.c"
+                          },
+                          "region": {
+                            "startLine": 230,
+                            "startColumn": 24
+                          }
+                        },
+                        "message": {
+                          "text": "Dereference"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "dereference"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "assignment"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/inftrees.c"
+                          },
+                          "region": {
+                            "startLine": 64,
+                            "startColumn": 31
+                          }
+                        },
+                        "message": {
+                          "text": "Possible assignment of null value to '\u0026base[work[sym] - match]'"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "assignment"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "assigns"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/inftrees.c"
+                          },
+                          "region": {
+                            "startLine": 202,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "assign"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "assigns"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Average",
+            "checker_severity": "Critical",
+            "comments": [
+              {
+                "text": "Функция inflate_table является внутренней функцией zlib. Для достижения ветви исполнения, где base и extra не присваиваются какие-то значения нужно, чтобы type (первый аргмент функции) был или CODES или ни одним из CODES, LENS, DISTS (внутренний enum). Все внутренние вызовы указывают точный тип, заданный при компиляции (не вычисляющийся в рантайме), таким образом единственный возможный вариант только при type = CODES. Однако все 2 вызоыва функции inflate_tables с type = CODES задают фиксирлванный параметр codes = 19, а значения work определяются в только с помощью sym \u003c codes, а переменная mathc ставится равной 20. Таким образом, условие work[sym] \u003e= match является недостижимым.",
+                "createdBy": "p.gubanov",
+                "createTs": "2026-03-05T17:49:13.711218Z"
+              }
+            ],
+            "details": "60cbff7e97549f7715048212a922009a01a74895",
+            "invariant": "vMC8HinRrw+X+QvYER7gTA",
+            "lang": "CXX",
+            "mtid": "SvEng.ND.6",
+            "origFunc": "inflate_table",
+            "review_ts": "2026-03-05T17:44:19Z",
+            "reviewed_by": "p.gubanov",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "DEREF_OF_NULL.EX"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.DEREF_OF_NULL.EX/SvEng.ND.6",
+          "ruleIndex": 2,
+          "kind": "notApplicable",
+          "level": "error",
+          "message": {
+            "text": "After having been assigned to a NULL value at inftrees.c:65, pointer '\u0026extra[work[sym] - match]' is dereferenced at inftrees.c:229."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/inftrees.c",
+                  "index": 4
+                },
+                "region": {
+                  "startLine": 229,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "inflate_table",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "Gx//DBs0RZHOXMyT9gmHjQ"
+          },
+          "partialFingerprints": {
+            "details": "c97718ab1f05673f5b08471b4cec98b886a67749"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "dereference"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/inftrees.c"
+                          },
+                          "region": {
+                            "startLine": 229,
+                            "startColumn": 39
+                          }
+                        },
+                        "message": {
+                          "text": "Dereference"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "dereference"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "assignment"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/inftrees.c"
+                          },
+                          "region": {
+                            "startLine": 65,
+                            "startColumn": 31
+                          }
+                        },
+                        "message": {
+                          "text": "Possible assignment of null value to '\u0026extra[work[sym] - match]'"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "assignment"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "assigns"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/inftrees.c"
+                          },
+                          "region": {
+                            "startLine": 202,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "assign"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "assigns"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Average",
+            "checker_severity": "Critical",
+            "comments": [
+              {
+                "text": "Функция inflate_table является внутренней функцией zlib. Для достижения ветви исполнения, где base и extra не присваиваются какие-то значения нужно, чтобы type (первый аргмент функции) был или CODES или ни одним из CODES, LENS, DISTS (внутренний enum). Все внутренние вызовы указывают точный тип, заданный при компиляции (не вычисляющийся в рантайме), таким образом единственный возможный вариант только при type = CODES. Однако все 2 вызоыва функции inflate_tables с type = CODES задают фиксирлванный параметр codes = 19, а значения work определяются в только с помощью sym \u003c codes, а переменная mathc ставится равной 20. Таким образом, условие work[sym] \u003e= match является недостижимым.",
+                "createdBy": "p.gubanov",
+                "createTs": "2026-03-05T17:49:03.341086Z"
+              }
+            ],
+            "details": "c97718ab1f05673f5b08471b4cec98b886a67749",
+            "invariant": "Gx//DBs0RZHOXMyT9gmHjQ",
+            "lang": "CXX",
+            "mtid": "SvEng.ND.6",
+            "origFunc": "inflate_table",
+            "review_ts": "2026-03-05T17:44:16Z",
+            "reviewed_by": "p.gubanov",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "DEREF_OF_NULL.EX"
+          }
+        },
+        {
+          "ruleId": "CSA.CXX.DIVISION_BY_ZERO/CSA.DIVISION_BY_ZERO.1",
+          "ruleIndex": 3,
+          "kind": "notApplicable",
+          "level": "warning",
+          "message": {
+            "text": "Division by zero"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/gzwrite.c",
+                  "index": 3
+                },
+                "region": {
+                  "startLine": 303,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "z_size_t gzfwrite(voidpc, z_size_t, z_size_t, gzFile)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "NrDubgS8XD5lQe7PYP5PuA"
+          },
+          "partialFingerprints": {
+            "details": "45c6cc96b20ed4d4befb59df23fcf37c3e33468f"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": ""
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 303,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "Division by zero"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 303,
+                            "startColumn": 12
+                          }
+                        },
+                        "message": {
+                          "text": "'?' condition is true"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 303,
+                            "startColumn": 12
+                          }
+                        },
+                        "message": {
+                          "text": "Assuming 'len' is not equal to 0"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 297,
+                            "startColumn": 14
+                          }
+                        },
+                        "message": {
+                          "text": "Left side of '\u0026\u0026' is false"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 297,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Assuming 'size' is 0"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 291,
+                            "startColumn": 56
+                          }
+                        },
+                        "message": {
+                          "text": "Left side of '\u0026\u0026' is false"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 291,
+                            "startColumn": 37
+                          }
+                        },
+                        "message": {
+                          "text": "Assuming field 'err' is equal to Z_OK"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 291,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Left side of '||' is false"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 291,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Assuming field 'mode' is equal to GZ_WRITE"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 286,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "Taking false branch"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 286,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Assuming 'file' is not equal to NULL"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": ""
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Low",
+            "checker_severity": "Major",
+            "comments": [
+              {
+                "text": "len = nitems * size; т.е. при size = 0, len = 0, что проверяется в тернарном операторе перед делением на size",
+                "createdBy": "p.gubanov",
+                "createTs": "2026-03-05T16:23:05.866507Z"
+              }
+            ],
+            "details": "45c6cc96b20ed4d4befb59df23fcf37c3e33468f",
+            "invariant": "NrDubgS8XD5lQe7PYP5PuA",
+            "lang": "CXX",
+            "mtid": "CSA.DIVISION_BY_ZERO.1",
+            "origFunc": "gzfwrite",
+            "review_ts": "2026-03-05T16:23:08Z",
+            "reviewed_by": "p.gubanov",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "CSA",
+            "warnClass": "DIVISION_BY_ZERO"
+          }
+        },
+        {
+          "ruleId": "CSA.CXX.DIVISION_BY_ZERO/CSA.DIVISION_BY_ZERO.1",
+          "ruleIndex": 3,
+          "kind": "notApplicable",
+          "level": "warning",
+          "message": {
+            "text": "Division by zero"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/gzread.c",
+                  "index": 2
+                },
+                "region": {
+                  "startLine": 464,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "z_size_t gzfread(voidp, z_size_t, z_size_t, gzFile)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "TFGaCCJgnh37kVS9nACW8Q"
+          },
+          "partialFingerprints": {
+            "details": "45c6cc96b20ed4d4befb59df23fcf37c3e33468f"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": ""
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 464,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "Division by zero"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 464,
+                            "startColumn": 12
+                          }
+                        },
+                        "message": {
+                          "text": "'?' condition is true"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 464,
+                            "startColumn": 12
+                          }
+                        },
+                        "message": {
+                          "text": "Assuming 'len' is not equal to 0"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 458,
+                            "startColumn": 14
+                          }
+                        },
+                        "message": {
+                          "text": "Left side of '\u0026\u0026' is false"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 458,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Assuming 'size' is 0"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 452,
+                            "startColumn": 28
+                          }
+                        },
+                        "message": {
+                          "text": "Left side of '\u0026\u0026' is false"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 452,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Assuming field 'err' is equal to Z_OK"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 448,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "Taking false branch"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 448,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Assuming field 'mode' is equal to GZ_READ"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 445,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "Taking false branch"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 445,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Assuming 'file' is not equal to NULL"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": ""
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Low",
+            "checker_severity": "Major",
+            "comments": [
+              {
+                "text": "len = nitems * size; т.е. при size = 0, len = 0, что проверяется в тернарном операторе перед делением на size",
+                "createdBy": "p.gubanov",
+                "createTs": "2026-03-05T16:22:13.323397Z"
+              }
+            ],
+            "details": "45c6cc96b20ed4d4befb59df23fcf37c3e33468f",
+            "invariant": "TFGaCCJgnh37kVS9nACW8Q",
+            "lang": "CXX",
+            "mtid": "CSA.DIVISION_BY_ZERO.1",
+            "origFunc": "gzfread",
+            "review_ts": "2026-03-05T16:20:52Z",
+            "reviewed_by": "p.gubanov",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "CSA",
+            "warnClass": "DIVISION_BY_ZERO"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.DOUBLE_CLOSE/SvEng.UR.7",
+          "ruleIndex": 4,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Handler 'stdout' is passed to a function at minigzip.c:411 by passing as 2nd parameter to function 'gz_uncompress' at minigzip.c:568 after the handler is closed again at minigzip.c:411 by passing as 2nd parameter to function 'gz_uncompress' at minigzip.c:568. Note: second close was on another loop iteration."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/test/minigzip.c",
+                  "index": 6
+                },
+                "region": {
+                  "startLine": 568,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "main",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "aoWeEIVTx+9nJX8ZBLVuDA"
+          },
+          "partialFingerprints": {
+            "details": "591ae8331ffccbb02e3d11a349025c9a2c30c878"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "pass to func"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/minigzip.c"
+                          },
+                          "region": {
+                            "startLine": 568,
+                            "startColumn": 25
+                          }
+                        },
+                        "message": {
+                          "text": "Variable 'stdout' is passed to function 'gz_uncompress' as 2nd parameter"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/minigzip.c"
+                          },
+                          "region": {
+                            "startLine": 397,
+                            "startColumn": 34
+                          }
+                        },
+                        "message": {
+                          "text": "Definition of 'gz_uncompress'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/minigzip.c"
+                          },
+                          "region": {
+                            "startLine": 411,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Variable 'out' is passed to function 'fclose' as 1st parameter"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "pass to func"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "close"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/minigzip.c"
+                          },
+                          "region": {
+                            "startLine": 568,
+                            "startColumn": 25
+                          }
+                        },
+                        "message": {
+                          "text": "Variable 'stdout' is passed to function 'gz_uncompress' as 2nd parameter"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/minigzip.c"
+                          },
+                          "region": {
+                            "startLine": 397,
+                            "startColumn": 34
+                          }
+                        },
+                        "message": {
+                          "text": "Definition of 'gz_uncompress'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/minigzip.c"
+                          },
+                          "region": {
+                            "startLine": 411,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Variable 'out' is passed to function 'fclose' as 1st parameter"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "close"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "checker_reliability": "Average",
+            "checker_severity": "Normal",
+            "details": "591ae8331ffccbb02e3d11a349025c9a2c30c878",
+            "invariant": "aoWeEIVTx+9nJX8ZBLVuDA",
+            "lang": "CXX",
+            "mtid": "SvEng.UR.7",
+            "origFunc": "main",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "DOUBLE_CLOSE"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.PASS_TO_PROC_AFTER_CHECK/SvEng.NE.37",
+          "ruleIndex": 5,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Variable 'len' is used at minigzip.c:407 by calling function 'fwrite' after being checked for having a negative value at minigzip.c:404."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/test/minigzip.c",
+                  "index": 6
+                },
+                "region": {
+                  "startLine": 407,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "gz_uncompress",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "YtpS9UH9fm2zNqMIGqysRQ"
+          },
+          "partialFingerprints": {
+            "details": "419e82d1e2f9940da7c4ad3e380c8e5ac5a1c8b7"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "use"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/minigzip.c"
+                          },
+                          "region": {
+                            "startLine": 407,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "Variable 'len' is passed to function 'fwrite' as 3rd parameter"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "use"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "check"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/minigzip.c"
+                          },
+                          "region": {
+                            "startLine": 404,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Variable len is compared with non-positive value"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "check"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "checker_reliability": "High",
+            "checker_severity": "Normal",
+            "details": "419e82d1e2f9940da7c4ad3e380c8e5ac5a1c8b7",
+            "invariant": "YtpS9UH9fm2zNqMIGqysRQ",
+            "lang": "CXX",
+            "mtid": "SvEng.NE.37",
+            "origFunc": "gz_uncompress",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "PASS_TO_PROC_AFTER_CHECK"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.PROC_USE.VULNERABLE/SvEng.L.1",
+          "ruleIndex": 6,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Use of vulnerable function 'strcpy' at example.c:74. This function is unsafe, use strncpy instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/test/example.c",
+                  "index": 5
+                },
+                "region": {
+                  "startLine": 74,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "test_compress",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "2PdDk1t4w/lzxiexCr6EPw"
+          },
+          "partialFingerprints": {
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/example.c"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "function call"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "checker_reliability": "High",
+            "checker_severity": "Minor",
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16",
+            "invariant": "2PdDk1t4w/lzxiexCr6EPw",
+            "lang": "CXX",
+            "mtid": "SvEng.L.1",
+            "origFunc": "test_compress",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "PROC_USE.VULNERABLE"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.PROC_USE.VULNERABLE/SvEng.L.1",
+          "ruleIndex": 6,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Use of vulnerable function 'strcpy' at example.c:121. This function is unsafe, use strncpy instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/test/example.c",
+                  "index": 5
+                },
+                "region": {
+                  "startLine": 121,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "test_gzio",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "FtEWetognZsxvi7BQGjRhw"
+          },
+          "partialFingerprints": {
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/example.c"
+                          },
+                          "region": {
+                            "startLine": 121,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "function call"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "checker_reliability": "High",
+            "checker_severity": "Minor",
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16",
+            "invariant": "FtEWetognZsxvi7BQGjRhw",
+            "lang": "CXX",
+            "mtid": "SvEng.L.1",
+            "origFunc": "test_gzio",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "PROC_USE.VULNERABLE"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.PROC_USE.VULNERABLE/SvEng.L.1",
+          "ruleIndex": 6,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Use of vulnerable function 'strcpy' at example.c:212. This function is unsafe, use strncpy instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/test/example.c",
+                  "index": 5
+                },
+                "region": {
+                  "startLine": 212,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "test_inflate",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "hmdEYX+OjtcWwIwZWRi7lA"
+          },
+          "partialFingerprints": {
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/example.c"
+                          },
+                          "region": {
+                            "startLine": 212,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "function call"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "checker_reliability": "High",
+            "checker_severity": "Minor",
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16",
+            "invariant": "hmdEYX+OjtcWwIwZWRi7lA",
+            "lang": "CXX",
+            "mtid": "SvEng.L.1",
+            "origFunc": "test_inflate",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "PROC_USE.VULNERABLE"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.PROC_USE.VULNERABLE/SvEng.L.1",
+          "ruleIndex": 6,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Use of vulnerable function 'strcpy' at example.c:304. This function is unsafe, use strncpy instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/test/example.c",
+                  "index": 5
+                },
+                "region": {
+                  "startLine": 304,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "test_large_inflate",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "UYSqt+R6IpqfNeRtNXzztA"
+          },
+          "partialFingerprints": {
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/example.c"
+                          },
+                          "region": {
+                            "startLine": 304,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "function call"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "checker_reliability": "High",
+            "checker_severity": "Minor",
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16",
+            "invariant": "UYSqt+R6IpqfNeRtNXzztA",
+            "lang": "CXX",
+            "mtid": "SvEng.L.1",
+            "origFunc": "test_large_inflate",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "PROC_USE.VULNERABLE"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.PROC_USE.VULNERABLE/SvEng.L.1",
+          "ruleIndex": 6,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Use of vulnerable function 'strcpy' at example.c:378. This function is unsafe, use strncpy instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/test/example.c",
+                  "index": 5
+                },
+                "region": {
+                  "startLine": 378,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "test_sync",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "fJeA9UGDmdARjJ/NiY1oiw"
+          },
+          "partialFingerprints": {
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/example.c"
+                          },
+                          "region": {
+                            "startLine": 378,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "function call"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "checker_reliability": "High",
+            "checker_severity": "Minor",
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16",
+            "invariant": "fJeA9UGDmdARjJ/NiY1oiw",
+            "lang": "CXX",
+            "mtid": "SvEng.L.1",
+            "origFunc": "test_sync",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "PROC_USE.VULNERABLE"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.PROC_USE.VULNERABLE/SvEng.L.1",
+          "ruleIndex": 6,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Use of vulnerable function 'strcpy' at example.c:453. This function is unsafe, use strncpy instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/test/example.c",
+                  "index": 5
+                },
+                "region": {
+                  "startLine": 453,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "test_dict_inflate",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "8EY0POdMGzJdsplDzyWy3w"
+          },
+          "partialFingerprints": {
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/test/example.c"
+                          },
+                          "region": {
+                            "startLine": 453,
+                            "startColumn": 5
+                          }
+                        },
+                        "message": {
+                          "text": "function call"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "checker_reliability": "High",
+            "checker_severity": "Minor",
+            "details": "b043c5a63bf9d432c816f2cb421c907fe912bf16",
+            "invariant": "8EY0POdMGzJdsplDzyWy3w",
+            "lang": "CXX",
+            "mtid": "SvEng.L.1",
+            "origFunc": "test_dict_inflate",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "PROC_USE.VULNERABLE"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.UNCHECKED_FUNC_RES.LIB.STRICT/SvEng.UNC.16",
+          "ruleIndex": 7,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Return value of function 'fcntl', called at gzlib.c:256, is not checked. The return value contains an error code or the result of read/write API call and so forth. Ignoring it may lead to missing important errors."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/gzlib.c",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 256,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "gz_open",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "stz2yBefykjiRB7CDxc2Lw"
+          },
+          "partialFingerprints": {
+            "details": "5bb17ebe352b7c9aa169b0c73da59a9365d300d5"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzlib.c"
+                          },
+                          "region": {
+                            "startLine": 256,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Call of 'fcntl'"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "checker_reliability": "VeryHigh",
+            "checker_severity": "Minor",
+            "details": "5bb17ebe352b7c9aa169b0c73da59a9365d300d5",
+            "invariant": "stz2yBefykjiRB7CDxc2Lw",
+            "lang": "CXX",
+            "mtid": "SvEng.UNC.16",
+            "origFunc": "gz_open",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "UNCHECKED_FUNC_RES.LIB.STRICT"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.UNCHECKED_FUNC_RES.STAT/SvEng.UNC.20",
+          "ruleIndex": 8,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Return value of function 'lseek64', called at gzlib.c:270, is not checked, but it is usually checked for this function (4/5)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/gzlib.c",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 270,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "gz_open",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "dVrdeCGRu96ciTbvvyyZVA"
+          },
+          "partialFingerprints": {
+            "details": "bf2a33fb3aa024da7bb375ca17c025c678de5b66"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "function call"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzlib.c"
+                          },
+                          "region": {
+                            "startLine": 270,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "lseek64"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "function call"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "counter-example"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzlib.c"
+                          },
+                          "region": {
+                            "startLine": 481,
+                            "startColumn": 14
+                          }
+                        },
+                        "message": {
+                          "text": "counter-example"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "counter-example"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "counter-example"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzlib.c"
+                          },
+                          "region": {
+                            "startLine": 398,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "counter-example"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "counter-example"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "counter-example"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzlib.c"
+                          },
+                          "region": {
+                            "startLine": 360,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "counter-example"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "counter-example"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "counter-example"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzlib.c"
+                          },
+                          "region": {
+                            "startLine": 276,
+                            "startColumn": 24
+                          }
+                        },
+                        "message": {
+                          "text": "counter-example"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "counter-example"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "checker_reliability": "High",
+            "checker_severity": "Normal",
+            "details": "bf2a33fb3aa024da7bb375ca17c025c678de5b66",
+            "invariant": "dVrdeCGRu96ciTbvvyyZVA",
+            "lang": "CXX",
+            "mtid": "SvEng.UNC.20",
+            "origFunc": "gz_open",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "UNCHECKED_FUNC_RES.STAT"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.USE_AFTER_FREE/SvEng.UF.1",
+          "ruleIndex": 9,
+          "kind": "notApplicable",
+          "level": "error",
+          "message": {
+            "text": "Variable 'dest' is used at gzread.c:555 after the referenced memory was deallocated at gzread.c:551."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/gzread.c",
+                  "index": 2
+                },
+                "region": {
+                  "startLine": 555,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "gzungetc",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "eGER7toroOdy1fBqRkNOBw"
+          },
+          "partialFingerprints": {
+            "details": "9d5f4a3c4316818482633e7816a277023f57b962"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "use"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 555,
+                            "startColumn": 23
+                          }
+                        },
+                        "message": {
+                          "text": "Use"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "use"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "free"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 551,
+                            "startColumn": 24
+                          }
+                        },
+                        "message": {
+                          "text": "Assign '\u0026state-\u003eout[state-\u003esize \u003c\u003c 1]' to 'dest'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 517,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "Call of 'gz_look'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 29
+                          }
+                        },
+                        "message": {
+                          "text": "Definition of 'gz_look'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 100,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Assign 'state-\u003eout' to '*state-\u003eout'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Variable 'state-\u003eout' is passed to function 'free' as 1st parameter"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "free"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Average",
+            "checker_severity": "Critical",
+            "comments": [
+              {
+                "text": "В ветке исполнения gz_look(state), при которой вызывается free(state-\u003eout) так же происходит вызов функции gz_error(state, Z_MEM_ERROR, \"out of memory\"), который устанавливает state-\u003eerr = Z_MEM_ERROR, что в следующей проверке проверяется условием (state-\u003emode != GZ_READ) || (state-\u003eerr != Z_OK \u0026\u0026 state-\u003eerr != Z_BUFF_ERROR), что приводит к вызову return -1 и исполнение дальнейшего кода, найденного статанализатором не происходит",
+                "createdBy": "p.gubanov",
+                "createTs": "2026-03-05T16:16:46.888314Z"
+              }
+            ],
+            "details": "9d5f4a3c4316818482633e7816a277023f57b962",
+            "invariant": "eGER7toroOdy1fBqRkNOBw",
+            "lang": "CXX",
+            "mtid": "SvEng.UF.1",
+            "origFunc": "gzungetc",
+            "review_ts": "2026-03-05T16:16:45Z",
+            "reviewed_by": "p.gubanov",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "USE_AFTER_FREE"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.USE_AFTER_FREE/SvEng.UF.1",
+          "ruleIndex": 9,
+          "kind": "notApplicable",
+          "level": "error",
+          "message": {
+            "text": "Variable 'state-\u003ein' is used at gzwrite.c:390 after the referenced memory was deallocated at gzwrite.c:388 by calling function 'gz_comp'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/gzwrite.c",
+                  "index": 3
+                },
+                "region": {
+                  "startLine": 390,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "gz_vacate",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "RHlzSHo+v4ZcvPPxHz4X/w"
+          },
+          "partialFingerprints": {
+            "details": "b85a49391c2fdbb977ec962e45d20e584a599ca7"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "use"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 390,
+                            "startColumn": 23
+                          }
+                        },
+                        "message": {
+                          "text": "Use"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "use"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "free"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 388,
+                            "startColumn": 11
+                          }
+                        },
+                        "message": {
+                          "text": "Call of 'gz_comp'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 65,
+                            "startColumn": 29
+                          }
+                        },
+                        "message": {
+                          "text": "Definition of 'gz_comp'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 71,
+                            "startColumn": 29
+                          }
+                        },
+                        "message": {
+                          "text": "Call of 'gz_init'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 11,
+                            "startColumn": 29
+                          }
+                        },
+                        "message": {
+                          "text": "Definition of 'gz_init'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzwrite.c"
+                          },
+                          "region": {
+                            "startLine": 27,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Variable 'state-\u003ein' is passed to function 'free' as 1st parameter"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "free"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Average",
+            "checker_severity": "Critical",
+            "comments": [
+              {
+                "text": "free(state-\u003ein) вызывается при state-\u003eerr = Z_MEM_ERROR и при этом возвращает -1, при этом из проверки if (state-\u003esize == 0 \u0026\u0026 gz_init(state) == -1) return -1; \nТаким образом код указанный анализатором не будет исполнен ни в какой ветви исполнения",
+                "createdBy": "p.gubanov",
+                "createTs": "2026-03-05T17:08:43.925538Z"
+              }
+            ],
+            "details": "b85a49391c2fdbb977ec962e45d20e584a599ca7",
+            "invariant": "RHlzSHo+v4ZcvPPxHz4X/w",
+            "lang": "CXX",
+            "mtid": "SvEng.UF.1",
+            "origFunc": "gz_vacate",
+            "review_ts": "2026-03-05T17:06:52Z",
+            "reviewed_by": "p.gubanov",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "USE_AFTER_FREE"
+          }
+        },
+        {
+          "ruleId": "SvEng.CXX.USE_AFTER_FREE/SvEng.UF.1",
+          "ruleIndex": 9,
+          "kind": "notApplicable",
+          "level": "error",
+          "message": {
+            "text": "Variable '\u0026state-\u003eout[state-\u003esize \u003c\u003c 1+-1]' is used at gzread.c:535 after the referenced memory was deallocated at gzread.c:517 by calling function 'gz_look'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.build/gzread.c",
+                  "index": 2
+                },
+                "region": {
+                  "startLine": 535,
+                  "sourceLanguage": "CXX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "gzungetc",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "fingerprints": {
+            "invariant": "IfCfWOi1MzfuDbKhCs6Bqw"
+          },
+          "partialFingerprints": {
+            "details": "71f5e1de25dd9cc8fff91e1b66eb2de8db18f70d"
+          },
+          "codeFlows": [
+            {
+              "message": {
+                "text": "use"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 535,
+                            "startColumn": 23
+                          }
+                        },
+                        "message": {
+                          "text": "Use"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "use"
+                  }
+                }
+              ]
+            },
+            {
+              "message": {
+                "text": "free"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 517,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "Call of 'gz_look'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 29
+                          }
+                        },
+                        "message": {
+                          "text": "Definition of 'gz_look'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 100,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Assign 'state-\u003eout' to '*state-\u003eout'"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "/.build/gzread.c"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Variable 'state-\u003eout' is passed to function 'free' as 1st parameter"
+                        }
+                      }
+                    }
+                  ],
+                  "message": {
+                    "text": "free"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "action": "Undecided",
+            "checker_reliability": "Average",
+            "checker_severity": "Critical",
+            "comments": [
+              {
+                "text": "В ветке исполнения gz_look(state), при которой вызывается free(state-\u003eout) так же происходит вызов функции gz_error(state, Z_MEM_ERROR, \"out of memory\"), который устанавливает state-\u003eerr = Z_MEM_ERROR, что в следующей проверке проверяется условием (state-\u003emode != GZ_READ) || (state-\u003eerr != Z_OK \u0026\u0026 state-\u003eerr != Z_BUFF_ERROR), что приводит к вызову return -1 и исполнение дальнейшего кода, найденного статанализатором не происходит",
+                "createdBy": "p.gubanov",
+                "createTs": "2026-03-05T16:16:39.770331Z"
+              }
+            ],
+            "details": "71f5e1de25dd9cc8fff91e1b66eb2de8db18f70d",
+            "invariant": "IfCfWOi1MzfuDbKhCs6Bqw",
+            "lang": "CXX",
+            "mtid": "SvEng.UF.1",
+            "origFunc": "gzungetc",
+            "review_ts": "2026-03-05T16:16:34Z",
+            "reviewed_by": "p.gubanov",
+            "severity": "Unspecified",
+            "status": "False Positive",
+            "tags": null,
+            "tool": "SvEng",
+            "warnClass": "USE_AFTER_FREE"
+          }
+        }
+      ]
+    }
+  ],
+  "properties": {
+    "artifacts_count": 0,
+    "branch_id": "4d09e4ad-fbdb-406d-9db0-125a3fb61a56",
+    "branch_name": "master",
+    "checkers_config_id": "703660ac-f807-4958-bcdc-0eb7a482dc65",
+    "checkers_config_name": "Svace version 4.x",
+    "checkers_config_version": "Svace version 4.0.250415 (git rev 98026ff6db99e5456837456346784f5a868f7e6c 2025-04-16 10:53:24 +0300)",
+    "project_id": "55069d55-f75d-4042-be34-b8e3ab76a768",
+    "project_name": "zlib",
+    "snapshot_id": "82c26663-f9a6-4daa-9e79-31697e5f80a1",
+    "snapshot_name": "zlib-git-master-09a1572",
+    "warnings_count": 21
+  }
+}
