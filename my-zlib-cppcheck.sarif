@@ -1,0 +1,1061 @@
+{
+  "version": "2.1.0",
+  "$schema": "https:\/\/docs.oasis-open.org\/sarif\/sarif\/v2.1.0\/errata01\/os\/schemas\/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream\/zfstream.h"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 120,
+                  "startColumn": 24,
+                  "startLine": 120
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream\/zfstream.h"
+                },
+                "region": {
+                  "endColumn": 23,
+                  "endLine": 120,
+                  "startColumn": 23,
+                  "startLine": 120
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Returning object that will be invalid when returning."
+          },
+          "ruleId": "returnDanglingLifetime"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream\/zfstream.h"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 125,
+                  "startColumn": 24,
+                  "startLine": 125
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream\/zfstream.h"
+                },
+                "region": {
+                  "endColumn": 23,
+                  "endLine": 125,
+                  "startColumn": 23,
+                  "startLine": 125
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Returning object that will be invalid when returning."
+          },
+          "ruleId": "returnDanglingLifetime"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream2\/zstream.h"
+                },
+                "region": {
+                  "endColumn": 15,
+                  "endLine": 293,
+                  "startColumn": 15,
+                  "startLine": 293
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Reference to temporary returned."
+          },
+          "ruleId": "returnTempReference"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples\/zran.c"
+                },
+                "region": {
+                  "endColumn": 43,
+                  "endLine": 206,
+                  "startColumn": 43,
+                  "startLine": 206
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Uninitialized variable: last"
+          },
+          "ruleId": "uninitvar"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples\/zran.c"
+                },
+                "region": {
+                  "endColumn": 5,
+                  "endLine": 326,
+                  "startColumn": 5,
+                  "startLine": 326
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Address of local auto-variable assigned to a function parameter."
+          },
+          "ruleId": "autoVariables"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples\/zran.c"
+                },
+                "region": {
+                  "endColumn": 5,
+                  "endLine": 328,
+                  "startColumn": 5,
+                  "startLine": 328
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Address of local auto-variable assigned to a function parameter."
+          },
+          "ruleId": "autoVariables"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples\/zran.c"
+                },
+                "region": {
+                  "endColumn": 13,
+                  "endLine": 498,
+                  "startColumn": 13,
+                  "startLine": 498
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Resource leak: in"
+          },
+          "ruleId": "resourceLeak"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "inflate.c"
+                },
+                "region": {
+                  "endColumn": 28,
+                  "endLine": 1282,
+                  "startColumn": 28,
+                  "startLine": 1282
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "inflate.c"
+                },
+                "region": {
+                  "endColumn": 36,
+                  "endLine": 1288,
+                  "startColumn": 36,
+                  "startLine": 1288
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Uninitialized variable: buf"
+          },
+          "ruleId": "uninitvar"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test\/minigzip.c"
+                },
+                "region": {
+                  "endColumn": 18,
+                  "endLine": 101,
+                  "startColumn": 18,
+                  "startLine": 101
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Uninitialized variable: msgbuf"
+          },
+          "ruleId": "uninitvar"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test\/minigzip.c"
+                },
+                "region": {
+                  "endColumn": 16,
+                  "endLine": 253,
+                  "startColumn": 16,
+                  "startLine": 253
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Uninitialized variable: out"
+          },
+          "ruleId": "uninitvar"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test\/minigzip.c"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 303,
+                  "startColumn": 20,
+                  "startLine": 303
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Uninitialized variable: out"
+          },
+          "ruleId": "uninitvar"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 13,
+                  "endLine": 393,
+                  "startColumn": 13,
+                  "startLine": 393
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "If resource allocation fails, then there is a possible null pointer dereference: header"
+          },
+          "ruleId": "nullPointerOutOfResources"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 13,
+                  "endLine": 396,
+                  "startColumn": 13,
+                  "startLine": 396
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "If resource allocation fails, then there is a possible null pointer dereference: header"
+          },
+          "ruleId": "nullPointerOutOfResources"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 17,
+                  "endLine": 398,
+                  "startColumn": 17,
+                  "startLine": 398
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "If resource allocation fails, then there is a possible null pointer dereference: header"
+          },
+          "ruleId": "nullPointerOutOfResources"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 13,
+                  "endLine": 402,
+                  "startColumn": 13,
+                  "startLine": 402
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "If resource allocation fails, then there is a possible null pointer dereference: header"
+          },
+          "ruleId": "nullPointerOutOfResources"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 17,
+                  "endLine": 404,
+                  "startColumn": 17,
+                  "startLine": 404
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "If resource allocation fails, then there is a possible null pointer dereference: header"
+          },
+          "ruleId": "nullPointerOutOfResources"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 13,
+                  "endLine": 408,
+                  "startColumn": 13,
+                  "startLine": 408
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "If resource allocation fails, then there is a possible null pointer dereference: header"
+          },
+          "ruleId": "nullPointerOutOfResources"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 17,
+                  "endLine": 410,
+                  "startColumn": 17,
+                  "startLine": 410
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "If resource allocation fails, then there is a possible null pointer dereference: header"
+          },
+          "ruleId": "nullPointerOutOfResources"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 13,
+                  "endLine": 414,
+                  "startColumn": 13,
+                  "startLine": 414
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "If resource allocation fails, then there is a possible null pointer dereference: header"
+          },
+          "ruleId": "nullPointerOutOfResources"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 17,
+                  "endLine": 417,
+                  "startColumn": 17,
+                  "startLine": 417
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "If resource allocation fails, then there is a possible null pointer dereference: header"
+          },
+          "ruleId": "nullPointerOutOfResources"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 25,
+                  "endLine": 389,
+                  "startColumn": 25,
+                  "startLine": 389
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "trees.c"
+                },
+                "region": {
+                  "endColumn": 13,
+                  "endLine": 421,
+                  "startColumn": 13,
+                  "startLine": 421
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "If resource allocation fails, then there is a possible null pointer dereference: header"
+          },
+          "ruleId": "nullPointerOutOfResources"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream3\/zfstream.h"
+                },
+                "region": {
+                  "endColumn": 1,
+                  "endLine": 27,
+                  "startColumn": 1,
+                  "startLine": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream\/zfstream.h"
+                },
+                "region": {
+                  "endColumn": 1,
+                  "endLine": 8,
+                  "startColumn": 1,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The one definition rule is violated, different classes\/structs have the same name 'gzfilebuf'"
+          },
+          "ruleId": "ctuOneDefinitionRuleViolation"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream3\/zfstream.h"
+                },
+                "region": {
+                  "endColumn": 1,
+                  "endLine": 234,
+                  "startColumn": 1,
+                  "startLine": 234
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream\/zfstream.h"
+                },
+                "region": {
+                  "endColumn": 1,
+                  "endLine": 68,
+                  "startColumn": 1,
+                  "startLine": 68
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The one definition rule is violated, different classes\/structs have the same name 'gzifstream'"
+          },
+          "ruleId": "ctuOneDefinitionRuleViolation"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream3\/zfstream.h"
+                },
+                "region": {
+                  "endColumn": 1,
+                  "endLine": 323,
+                  "startColumn": 1,
+                  "startLine": 323
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contrib\/iostream\/zfstream.h"
+                },
+                "region": {
+                  "endColumn": 1,
+                  "endLine": 80,
+                  "startColumn": 1,
+                  "startLine": 80
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "The one definition rule is violated, different classes\/structs have the same name 'gzofstream'"
+          },
+          "ruleId": "ctuOneDefinitionRuleViolation"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https:\/\/cppcheck.sourceforge.io",
+          "name": "Cppcheck",
+          "rules": [
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": ""
+              },
+              "help": {
+                "text": ""
+              },
+              "id": "returnDanglingLifetime",
+              "name": "",
+              "properties": {
+                "precision": "high",
+                "problem.severity": "error",
+                "security-severity": "9.9",
+                "tags": [
+                  "external\/cwe\/cwe-562",
+                  "security"
+                ]
+              },
+              "shortDescription": {
+                "text": ""
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": ""
+              },
+              "help": {
+                "text": ""
+              },
+              "id": "returnTempReference",
+              "name": "",
+              "properties": {
+                "precision": "high",
+                "problem.severity": "error",
+                "security-severity": "9.9",
+                "tags": [
+                  "external\/cwe\/cwe-562",
+                  "security"
+                ]
+              },
+              "shortDescription": {
+                "text": ""
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": ""
+              },
+              "help": {
+                "text": ""
+              },
+              "id": "uninitvar",
+              "name": "",
+              "properties": {
+                "precision": "high",
+                "problem.severity": "error",
+                "security-severity": "9.9",
+                "tags": [
+                  "external\/cwe\/cwe-457",
+                  "security"
+                ]
+              },
+              "shortDescription": {
+                "text": ""
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": ""
+              },
+              "help": {
+                "text": ""
+              },
+              "id": "autoVariables",
+              "name": "",
+              "properties": {
+                "precision": "high",
+                "problem.severity": "error",
+                "security-severity": "9.9",
+                "tags": [
+                  "external\/cwe\/cwe-562",
+                  "security"
+                ]
+              },
+              "shortDescription": {
+                "text": ""
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": ""
+              },
+              "help": {
+                "text": ""
+              },
+              "id": "resourceLeak",
+              "name": "",
+              "properties": {
+                "precision": "high",
+                "problem.severity": "error",
+                "security-severity": "9.9",
+                "tags": [
+                  "external\/cwe\/cwe-775",
+                  "security"
+                ]
+              },
+              "shortDescription": {
+                "text": ""
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": ""
+              },
+              "help": {
+                "text": ""
+              },
+              "id": "nullPointerOutOfResources",
+              "name": "",
+              "properties": {
+                "precision": "high",
+                "problem.severity": "error",
+                "security-severity": "8.5",
+                "tags": [
+                  "external\/cwe\/cwe-476",
+                  "security"
+                ]
+              },
+              "shortDescription": {
+                "text": ""
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": ""
+              },
+              "help": {
+                "text": ""
+              },
+              "id": "ctuOneDefinitionRuleViolation",
+              "name": "",
+              "properties": {
+                "precision": "high",
+                "problem.severity": "error",
+                "security-severity": "9.9",
+                "tags": [
+                  "external\/cwe\/cwe-758",
+                  "security"
+                ]
+              },
+              "shortDescription": {
+                "text": ""
+              }
+            }
+          ],
+          "semanticVersion": "2.19.0"
+        }
+      }
+    }
+  ]
+}
+
