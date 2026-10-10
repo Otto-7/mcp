@@ -1,3 +1,4 @@
+```mermaid
 flowchart LR
     subgraph External1["Входные данные"]
         A[SARIF]
@@ -12,3 +13,4 @@ flowchart LR
     A --> B
     B --> C
     C --> D
+```
