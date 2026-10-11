@@ -22,16 +22,17 @@ flowchart TD
   'fontSize': '14px'
 }}}%%
 flowchart TD
-    B["<b>Basis (основа)</b>"]
-    B --> S["<b>Syntax</b><br/><br/>структура кода, AST"]
-    B --> SI["<b>Semantic info</b><br/><br/>типы, связи"]
-    B --> AN["<b>Annotations</b><br/><br/>информация о функциях и переменных"]
+    subgraph Methods["<b>Три метода анализа</b>"]
+        P["<b>Pattern-based</b><br/>поиск паттернов"]
+        D["<b>Data-flow</b><br/>значения переменных"]
+        T["<b>Taint</b><br/>поток данных"]
+    end
 
-    S --> M["<b>Три метода анализа</b>"]
-    SI --> M
-    AN --> M
+    subgraph Basis["<b>Basis (основа)</b>"]
+        S["<b>Syntax</b><br/>структура кода, AST"]
+        SI["<b>Semantic info</b><br/>типы, связи"]
+        AN["<b>Annotations</b><br/>о функциях и переменных"]
+    end
 
-    M --> P["<b>Pattern-based</b><br/><br/>поиск опасных паттернов"]
-    M --> D["<b>Data-flow</b><br/><br/>значения переменных"]
-    M --> T["<b>Taint</b><br/><br/>поток данных"]
+    Methods --> Basis
 ```
