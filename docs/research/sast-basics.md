@@ -23,15 +23,19 @@ flowchart TD
 }}}%%
 flowchart TD
     subgraph Methods["<b>Три метода анализа</b>"]
+        direction LR
         P["<b>Pattern-based</b><br/>поиск паттернов"]
         D["<b>Data-flow</b><br/>значения переменных"]
         T["<b>Taint</b><br/>поток данных"]
+        P ~~~ D ~~~ T
     end
 
     subgraph Basis["<b>Basis (основа)</b>"]
+        direction LR
         S["<b>Syntax</b><br/>структура кода, AST"]
         SI["<b>Semantic info</b><br/>типы, связи"]
         AN["<b>Annotations</b><br/>о функциях и переменных"]
+        S ~~~ SI ~~~ AN
     end
 
     Methods --> Basis
