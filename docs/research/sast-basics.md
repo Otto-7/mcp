@@ -8,7 +8,7 @@ SAST — анализ исходного кода без запуска. Ище�
   'fontSize': '14px'
 }}}%%
 flowchart TD
-    subgraph Methods["<b>Три метода анализа</b>"]
+    subgraph Methods["<b>Методы анализа</b>"]
         direction LR
         P["<b>Pattern-based</b><br/>поиск паттернов"]
         D["<b>Data-flow</b><br/>значения переменных"]
