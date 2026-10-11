@@ -35,15 +35,30 @@ Svacer − это комплексный пользовательский инт
 Правило — инструкция анализатору: что искать и как назвать проблему.
 Содержит id, описание, критичность, помощь по исправлению.
 
-### Примеры из SARIF
+Finding — это одно срабатывание правила. Основная единица данных, с которой работает сервер.
 
-| id | Описание | Уровень |
-|---|---|---|
-| B608 | Possible SQL injection | error |
-| B101 | Use of assert detected | note |
-| ... | ... | ... |
+1) Анализатор читает код.
+2) Строит AST.
+3) Сопоставляет AST с паттернами из правил.
+4) Если паттерн совпал — создаёт finding.
+5) Записывает его в SARIF в массив results.
 
-### Где в SARIF
+Поля у finding:
+ruleId
+message.text
+level
+locations
+codeFlows
+fingerprints
+properties
 
-Правила лежат в `runs[0].tool.driver.rules`.
-Findings ссылаются на правила через поле `ruleId` в `results`.
+## Уровни критичности 
+Critical 
+Major 
+Minor 
+Normal 
+
+У Svace находятся в разделе properties.severity
+
+## Типы findings по истинности
+
