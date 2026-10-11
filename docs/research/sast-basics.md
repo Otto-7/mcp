@@ -20,7 +20,7 @@ flowchart TD
         direction LR
         S["<b>Syntax</b><br/>структура кода, AST"]
         SI["<b>Semantic info</b><br/>типы, связи"]
-        AN["<b>Annotations</b><br/>о функциях и переменных"]
+        AN["<b>Annotations</b><br/>функции и переменные"]
         S ~~~ SI ~~~ AN
     end
 
@@ -58,14 +58,14 @@ properties
 - Minor 
 - Normal 
 
-У Svace находятся в разделе properties.severity
+У Svacer находятся в разделе properties.severity
 
 ## Типы findings по истинности
 Помечаются разметкой в Svacer + LLM
-True Positive (TP)
-False Positive (FP) 
-True Negative (TN)
-False Negative (FN)
+- True Positive (TP)
+- False Positive (FP) 
+- True Negative (TN)
+- False Negative (FN)
 
 ***Трассы (codeFlows) — результат taint-анализа.
 
