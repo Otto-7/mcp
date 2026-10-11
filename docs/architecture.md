@@ -7,7 +7,6 @@ flowchart LR
         B[Обработка данных]
         C[Интерфейс для LLM]
     end
-    subgraph 
         D[LLM]
     end
     A --> B
