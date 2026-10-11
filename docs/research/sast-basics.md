@@ -16,7 +16,7 @@ flowchart TD
         P ~~~ D ~~~ T
     end
 
-    subgraph Basis["<b>Basis (основа)</b>"]
+    subgraph Basis["<b>Basis</b>"]
         direction LR
         S["<b>Syntax</b><br/>структура кода, AST"]
         SI["<b>Semantic info</b><br/>типы, связи"]
