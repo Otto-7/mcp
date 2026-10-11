@@ -1,6 +1,8 @@
 import json
 
-def parse_sarif(filepath):
+def parse_sarif(filepath=None):
+    if filepath is None:
+        filpath=DEFAULT_SARIF
     with open(filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -30,5 +32,5 @@ def parse_sarif(filepath):
     return errors
 
 if __name__=="__main__":
-    result=parse_sarif(r"C:\Users\User\Documents\Проект сервер\zlib-git-master-09a1572.sarif")
+    result=parse_sarif()
     print(f"Всего ошибок: {len(result)}")
