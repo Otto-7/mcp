@@ -8,7 +8,7 @@ SAST — анализ исходного кода без запуска. Ище�
   'fontSize': '14px'
 }}}%%
 flowchart TD
-    SAST["<b>SAST</b>"] --> A["<b>Pattern-based</b><br/><br/>Поиск опасных паттернов"]
-    SAST --> B["<b>Data-flow</b><br/><br/>Анализ значений переменных"]
-    SAST --> C["<b>Taint</b><br/><br/>Путь данных от источника к приёмнику"]
+    SAST["<span style='font-size:18px'><b>SAST</b></span>"] --> A["<span style='font-size:16px'><b>Pattern-based</b></span><br/><br/>Поиск опасных паттернов"]
+    SAST --> B["<span style='font-size:16px'><b>Data-flow</b></span><br/><br/>Анализ значений переменных"]
+    SAST --> C["<span style='font-size:16px'><b>Taint</b></span><br/><br/>Путь данных от источника к приёмнику"]
 ```
