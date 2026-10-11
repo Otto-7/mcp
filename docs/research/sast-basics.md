@@ -44,13 +44,13 @@ Finding — это одно срабатывание правила. Основ�
 5) Записывает его в SARIF в массив results
 
 Поля у finding:
-ruleId
-message.text
-level
-locations
-codeFlows
-fingerprints
-properties
+- ruleId
+- message.text
+- level
+- locations
+- codeFlows
+- fingerprints
+- properties
 
 ## Уровни критичности 
 - Critical 
