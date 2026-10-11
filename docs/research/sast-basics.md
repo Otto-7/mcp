@@ -11,8 +11,8 @@ flowchart TD
     subgraph Methods["<b>Методы анализа</b>"]
         direction LR
         P["<b>Pattern-based</b><br/>поиск паттернов"]
-        D["<b>Data-flow</b><br/>значения переменных"]
-        T["<b>Taint</b><br/>поток данных"]
+        D["<b>Data-flow</b><br/>проверяет, какие значения может принять переменная"]
+        T["<b>Taint</b><br/>путь данных"]
         P ~~~ D ~~~ T
     end
 
@@ -20,7 +20,7 @@ flowchart TD
         direction LR
         S["<b>Syntax</b><br/>структура кода, AST"]
         SI["<b>Semantic info</b><br/>типы, связи"]
-        AN["<b>Annotations</b><br/>функции и переменные"]
+        AN["<b>Annotations</b><br/>как ведут себя функции"]
         S ~~~ SI ~~~ AN
     end
 
