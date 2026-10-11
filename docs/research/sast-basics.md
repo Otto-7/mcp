@@ -33,7 +33,7 @@ Svacer − это комплексный пользовательский инт
 ## Правило анализа
 
 Правило — инструкция анализатору: что искать и как назвать проблему.
-Содержит id, описание, критичность, помощь по исправлению.
+Содержит id, описание, критичность, комментарий.
 
 Finding — это одно срабатывание правила. Основная единица данных, с которой работает сервер.
 
@@ -53,12 +53,28 @@ fingerprints
 properties
 
 ## Уровни критичности 
-Critical 
-Major 
-Minor 
-Normal 
+- Critical 
+- Major 
+- Minor 
+- Normal 
 
 У Svace находятся в разделе properties.severity
 
 ## Типы findings по истинности
+Помечаются разметкой в Svacer + LLM
+True Positive (TP)
+False Positive (FP) 
+True Negative (TN)
+False Negative (FN)
+
+***Трассы (codeFlows) — результат taint-анализа.
+
+## Ограничения SAST 
+- Ложные срабатывания(FP)
+- Пропуски (FN)
+- Runtime-проблемы
+
+## Структура трасс в SARIF
+
+result.codeFlows[].threadFlows[].locations[].location
 
