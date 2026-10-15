@@ -289,3 +289,12 @@ SARIF позволяет предоставить дополнительную �
             "text": ""
           }
 ```
+### Linking results to artifacts
+SARIF связывает finding с артефактом через artifactLocation.index:
+```json
+"artifactLocation": {
+  "uri": "/.build/deflate.c",
+  "index": 0
+}
+```
+"index": 0 означает: «Чтобы найти больше информации об артефакте в этом месте, посмотрите объект artifact под индексом 0 в массиве run.artifacts».
