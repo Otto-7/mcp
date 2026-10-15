@@ -18,7 +18,7 @@ flowchart LR
     CFG["config.py"]
     LLM["LLM"]
 
-    Host --> S
+    Host <--> S
     S --> C
     C --> P
     C --> N
@@ -29,7 +29,6 @@ flowchart LR
     P -.-> CFG
     N -.-> CFG
     A -.-> CFG
-    S --> Host
     Host --> LLM
 
     style M fill:#f0f0f0
