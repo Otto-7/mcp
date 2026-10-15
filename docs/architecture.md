@@ -2,7 +2,7 @@
 
 ```mermaid
 flowchart LR
-    Svace["Svace"] --> System["MCP-сервер<br/>обработка SARIF"] --> LLM["LLM"]
+    Svace["Svace"] --> System["MCP-сервер<br/>(обработка SARIF)"] --> LLM["LLM"]
 ```
 
 ## 2. Декомпозиция компонентов
