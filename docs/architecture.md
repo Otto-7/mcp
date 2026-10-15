@@ -19,6 +19,7 @@ flowchart LR
 
 ## 2. Декомпозиция компонентов
 
+```mermaid
 flowchart LR
     Host["Хост"]
     S["server.py"]
@@ -48,5 +49,6 @@ flowchart LR
     style CFG fill:#f0f0f0
     style Host fill:#e8f0ff
     style LLM fill:#e8f0ff
+```
 
 ## 3. Потоки данных
