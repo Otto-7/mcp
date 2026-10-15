@@ -1,16 +1,15 @@
-SARIF (Static Analysis Results Interchange Format) - это формат на основе JSON для вывода результатов статического анализа.
+# SARIF (Static Analysis Results Interchange Format) - это формат на основе JSON для вывода результатов статического анализа.
 
-Документация
-- https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/sarif-v2.1.0-os.html
-- https://svacer.ispras.ru/mediawiki/index.php?title=Svacer
-
+## План:
 - Структура SARIF 2.1.0
 - Значимые поля
 - Нормализация
 - Дедупликация
 - Группировка
+ 
+## Структура SARIF 2.1.0
 
-## Logs and runs
+### Logs and runs
 
 Свойство $schema содержит URI схемы SARIF. Это позволяет средам разработки выполнять проверку схемы (например, подчеркивать неправильно написанные названия свойств). 
 ```json
@@ -38,7 +37,7 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
   ]
 }
 ```
-## Property bag — объект `properties` 
+### Property bag — объект `properties` 
 Если в спецификации SARIF нет подходящего элемента, данные помещаются в раздел properties.
 Поля для Svace: severity, cwe, reliability, lang, mtid, origin, svacer_checker_id, tool, warnClass. Для анализа LLM нужно только правило severity.
 ```json
@@ -83,16 +82,17 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
 }
 ```
 
-## Results 
-Результаты представляют собой проблемы — условия, которые могут снизить качество кода. Некоторые результаты могут быть чисто информационными.
+### Results 
+Результаты (findings) представляют собой проблемы — условия, которые могут снизить качество кода. Некоторые результаты могут быть чисто информационными.
 ```json
-{
+"results": [
+        {
           "ruleId": "SvEng.CXX.BUFFER_OVERLAP/SvEng.BO.65",
           "ruleIndex": 0,
           "kind": "notApplicable",
           "level": "error",
           "message": {
-            "text": "Memory areas of 'memcpy' function arguments '(*s-\u003ewindow)[s-\u003ew_size]' and 's-\u003ewindow' are overlapping at deflate.c:1774. Consider using 'memmove' function instead."
+            "text": "Memory areas of 'memcpy' function arguments '(*s-\u003ewindow)[wsize]' and 's-\u003ewindow' are overlapping at deflate.c:287. Consider using 'memmove' function instead."
           },
           "locations": [
             {
@@ -102,23 +102,23 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
                   "index": 0
                 },
                 "region": {
-                  "startLine": 1774,
+                  "startLine": 287,
                   "sourceLanguage": "CXX"
                 }
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "deflate_stored",
+                  "fullyQualifiedName": "fill_window",
                   "kind": "function"
                 }
               ]
             }
           ],
           "fingerprints": {
-            "invariant": "eo3cL51uYoT3HC29ExoP3A"
+            "invariant": "7P6Pei16cq9IlDbvpqZ5WQ"
           },
           "partialFingerprints": {
-            "details": "44f65d349fca4d2d47ec144ff5fd25682b9ffba1"
+            "details": "b17829f46421a9bd763acfc31fb7f63ae45768b3"
           },
           "codeFlows": [
             {
@@ -135,8 +135,8 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
                             "uri": "/.build/deflate.c"
                           },
                           "region": {
-                            "startLine": 1774,
-                            "startColumn": 17
+                            "startLine": 287,
+                            "startColumn": 13
                           }
                         },
                         "message": {
@@ -158,18 +158,18 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
             "checker_severity": "Critical",
             "comments": [
               {
-                "text": "buffer overlap не происходит, так как реализация zmemcpy(dest, src, size), принимает size = s-\u003estrstart - s-\u003ew_size и копирует побайтно во внтуренней реализации. Таким образом, хоть это и один буфер, но ни в какой момент при сохранении внутреннего инварианта не происходит пересечения.",
-                "createdBy": "p.gubanov",
-                "createTs": "2026-03-05T15:44:35.941077Z"
+                "text": "Перекрытия не происходит - память копируется со сдвигом wsize в количестве (wsize - more) байтов, где more \u003e= 0.",
+                "createdBy": "d.kaluh",
+                "createTs": "2026-02-02T10:26:10.39938Z"
               }
             ],
-            "details": "44f65d349fca4d2d47ec144ff5fd25682b9ffba1",
-            "invariant": "eo3cL51uYoT3HC29ExoP3A",
+            "details": "b17829f46421a9bd763acfc31fb7f63ae45768b3",
+            "invariant": "7P6Pei16cq9IlDbvpqZ5WQ",
             "lang": "CXX",
             "mtid": "SvEng.BO.65",
-            "origFunc": "deflate_stored",
-            "review_ts": "2026-03-05T15:41:52Z",
-            "reviewed_by": "p.gubanov",
+            "origFunc": "fill_window",
+            "review_ts": "2026-02-02T10:25:06Z",
+            "reviewed_by": "d.kaluh",
             "severity": "Unspecified",
             "status": "False Positive",
             "tags": null,
@@ -178,7 +178,7 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
           }
         }
 ```
-## Message
+### Message
 Сообщения SARIF представлены отдельным объектом — message. 
 ```json
  "message": {
@@ -186,14 +186,14 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
           }
 ```
 
-## Rule identifier
+### Rule identifier
 Идентификатор — это код, а не человекочитаемая строка. У такого кода два преимущества. Во-первых, его легко искать в интернете: короткий код даёт точечный результат, а не тысячи совпадений. Во-вторых, он не привязан к языку: не нужно переводить название правила на разные языки.
 ```json
 {
           "ruleId": "SvEng.CXX.BUFFER_OVERLAP/SvEng.BO.65"
 }
 ```
-## Level
+### Level
 Свойство `result.level` указывает, насколько серьёзна проблема:
 
 - **`"error"`** — серьёзная проблема;
@@ -206,10 +206,10 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
 }
 ```
 
-## Locations
+### Locations
 Место в коде, где инструмент обнаружил результат, называется result location. SARIF представляет местоположения результатов с помощью необязательного свойства `result.locations` — массива объектов location, который почти всегда содержит ровно один элемент.
 
-### Physical and logical locations
+#### Physical and logical locations
 SARIF поддерживает два вида местоположений: физические и логические. Физическое местоположение описывает место относительно некоторого программного артефакта — например, диапазон строк в исходном файле или диапазон байтов в исполняемом файле. Логическое местоположение описывает место по имени, без привязки к программному артефакту, — например, имя метода внутри класса внутри пространства имён.
 
 SARIF поддерживает логические местоположения по двум причинам:
@@ -238,7 +238,7 @@ SARIF поддерживает логические местоположения
           ]
 ```
 
-## Artifacts
+### Artifacts
 Артефакт - последовательность байтов, адресуемая через URI. Примеры: физический файл в файловой системе, исходный файл.
 Почти каждый результат указывает местоположение, и эти местоположения часто являются физическими, которые, в свою очередь, содержат объекты artifactLocation:
 ```json
@@ -289,7 +289,7 @@ SARIF позволяет предоставить дополнительную �
             "text": ""
           }
 ```
-### Linking results to artifacts
+#### Linking results to artifacts
 SARIF связывает finding с артефактом через artifactLocation.index:
 ```json
 "artifactLocation": {
@@ -298,3 +298,19 @@ SARIF связывает finding с артефактом через artifactLoca
 }
 ```
 "index": 0 означает: «Чтобы найти больше информации об артефакте в этом месте, посмотрите объект artifact под индексом 0 в массиве run.artifacts».
+
+## Значимые поля
+Какая задача у LLM?
+Что для этого LLM должна знать? 
+
+## Нормализация
+
+## Дедупликация
+
+## Группировка
+
+## Источники
+
+- [Спецификация SARIF 2.1.0 — OASIS](https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/sarif-v2.1.0-os.html)
+- [Документация Svacer](https://svacer.ispras.ru/mediawiki/index.php?title=Svacer)
+- [Microsoft SARIF Tutorials](https://github.com/microsoft/sarif-tutorials/blob/main/README.md#contents)
