@@ -10,7 +10,7 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
 - Дедупликация
 - Группировка
 
-## Логи и запуски
+## Logs and runs
 
 Свойство $schema содержит URI схемы SARIF. Это позволяет средам разработки выполнять проверку схемы (например, подчеркивать неправильно написанные названия свойств). 
 ```json
@@ -83,7 +83,7 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
 }
 ```
 
-## Результаты 
+## Results 
 Результаты представляют собой проблемы — условия, которые могут снизить качество кода. Некоторые результаты могут быть чисто информационными.
 ```json
 {
@@ -177,4 +177,19 @@ SARIF (Static Analysis Results Interchange Format) - это формат на о
             "warnClass": "BUFFER_OVERLAP"
           }
         }
+```
+## Message
+Сообщения SARIF представлены отдельным объектом — message. 
+```json
+ "message": {
+            "text": "Memory areas of 'memcpy' function arguments '(*s-\u003ewindow)[s-\u003ew_size]' and 's-\u003ewindow' are overlapping at deflate.c:1774. Consider using 'memmove' function instead."
+          }
+```
+
+## Rule identifier
+Идентификатор — это код, а не человекочитаемая строка. У такого кода два преимущества. Во-первых, его легко искать в интернете: короткий код даёт точечный результат, а не тысячи совпадений. Во-вторых, он не привязан к языку: не нужно переводить название правила на разные языки.
+```json
+{
+          "ruleId": "SvEng.CXX.BUFFER_OVERLAP/SvEng.BO.65"
+}
 ```
