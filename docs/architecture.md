@@ -6,8 +6,8 @@ flowchart LR
 ```
 
 ## 2. Декомпозиция компонентов
-
 ```mermaid
+%%{init: {'flowchart': {'curve': 'basis'}}}%%
 flowchart LR
     Host["Хост"]
     S["server.py"]
