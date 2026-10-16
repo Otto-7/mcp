@@ -1,4 +1,4 @@
-### Model Context Protocol (MCP) - это открытый стандарт подключения LLM к внешним системам. 
+# Model Context Protocol (MCP) - это открытый стандарт подключения LLM к внешним системам. 
 
 План :
  Роли host / client / server
