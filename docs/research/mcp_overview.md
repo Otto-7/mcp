@@ -47,9 +47,9 @@ MCP состоит из двух слоев: уровень данных и тр
 
 ## Примитивы (tools, resources, prompts)
 Примитивы - это то, чем сервер и хост обмениваются с друг другом.
-Tools - это функции, которые LLM может вызывать для выполнения действий.
-Resources - это структурированные данные сервера (содержимое файлов).
-Promts - шаблоны, которые помогают структурировать ответ LLM. 
+- Tools - это функции, которые LLM может вызывать для выполнения действий.
+- Resources - это структурированные данные сервера (содержимое файлов).
+- Promts - шаблоны, которые помогают структурировать ответ LLM. 
 
 ## Архитектура MCP 
 <img width="1805" height="565" alt="2026-10-17_00-38-24" src="https://github.com/user-attachments/assets/4bdece20-5e99-4911-ac7c-71bf4f3958aa" />
@@ -59,5 +59,5 @@ Promts - шаблоны, которые помогают структуриро�
 ## Почему FastMCP
 
 ## Документация
-https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro
-https://modelcontextprotocol.io/specification/2026-07-28
+- [Введение в MCP](https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro)
+- [Спецификация MCP](https://modelcontextprotocol.io/specification/2026-07-28)
