@@ -39,11 +39,11 @@ flowchart LR
 
 ## 3. Потоки данных
 
-1. LLM решает вызвать `get_summary()`
+1. LLM вызывает `get_summary()`
 2. Хост отправляет вызов серверу
 3. `server.py` получает вызов
 4. `server.py` вызывает `core.get_summary()`
-5. `svacer_client.download()` → скачивает SARIF из Svacer
+5. `svacer_client.download()` скачивает SARIF из Svacer
 6. `core.py` вызывает `parser.load_sarif(path)`
 7. `parser.py` открывает SARIF-файл
 8. `parser.py` читает JSON
