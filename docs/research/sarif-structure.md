@@ -300,17 +300,40 @@ SARIF связывает finding с артефактом через artifactLoca
 "index": 0 означает: «Чтобы найти больше информации об артефакте в этом месте, посмотрите объект artifact под индексом 0 в массиве run.artifacts».
 
 ## Значимые поля
-Какая задача у LLM?
-Что для этого LLM должна знать? 
+Критерии:
+1. Идентификация проблемы
+2. Контекст и локация
+3. Трасса
 
+Поля:
+- `ruleId` — тип ошибки
+- `level` — уровень критичности
+- `message.text` — описание
+- `locations[0].physicalLocation.artifactLocation.uri` — файл
+- `locations[0].physicalLocation.region.startLine` — строка
+- `codeFlows` — трасса
+   
 ## Нормализация
+Реализован в парсере.
 
 ## Дедупликация
+Дедупликация - это процесс устранения дубликатов записей об одних и тех же ошибках.
+
+Причины:
+- Использование нескольких анализаторов
+- При дублировании кода
+- Повторные запуски накапливают результаты
+
+В данном проекте дубликаты - это ошибки с одновременно одинаковыми: ruleId, file, line. 
+
+Решение:
+1) Создать отдельный файл deduplicator.py ИЛИ добавить в parser.py
+2) Применить set() для ф-ции deduplicate_errors()
 
 ## Группировка
 
-## Источники
 
+## Источники
 - [Спецификация SARIF 2.1.0 — OASIS](https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/sarif-v2.1.0-os.html)
 - [Документация Svacer](https://svacer.ispras.ru/mediawiki/index.php?title=Svacer)
 - [Microsoft SARIF Tutorials](https://github.com/microsoft/sarif-tutorials/blob/main/README.md#contents)
