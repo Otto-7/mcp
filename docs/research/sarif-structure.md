@@ -331,8 +331,8 @@ SARIF связывает finding с артефактом через artifactLoca
 2) Применить set() для ф-ции deduplicate_errors()
 
 ## Группировка
-
-
+[Группировка списков](https://labex.io/ru/tutorials/python-how-to-efficiently-group-a-python-list-based-on-a-given-function-417802) – это процесс организации элементов списка в категории на основе определенной характеристики или функции.
+(Понадобится на этапе создания mcp-инструментов) 
 ## Источники
 - [Спецификация SARIF 2.1.0 — OASIS](https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/sarif-v2.1.0-os.html)
 - [Документация Svacer](https://svacer.ispras.ru/mediawiki/index.php?title=Svacer)
