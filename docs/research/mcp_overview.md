@@ -1,13 +1,13 @@
 # Model Context Protocol (MCP) - это открытый стандарт подключения LLM к внешним системам. 
 
 План :
- Роли host / client / server
- Операции (tools, resources, prompts)
- Транспорты (stdio, HTTP)
- Архитектура MCP
- Учебный MCP-сервер с 2 инструментами
- Почему FastMCP
- Документация
+- [Роли host / client / server](#роли-host--client--server)
+- [Операции (tools, resources, prompts)](#операции-tools-resources-prompts)
+- [Транспорты (stdio, HTTP)](#транспорты-stdio-http)
+- [Архитектура MCP](#архитектура-mcp)
+- [Учебный MCP-сервер с 2 инструментами](#учебный-mcp-сервер-с-2-инструментами)
+- [Почему FastMCP](#почему-fastmcp)
+- [Документация](#документация)
 
 ## Роли host / client / server
 MCP использует архитектуру из трех участников. 
@@ -48,6 +48,9 @@ MCP состоит из двух слоев: уровень данных и тр
 ## Архитектура MCP 
 <img width="1805" height="565" alt="2026-10-17_00-38-24" src="https://github.com/user-attachments/assets/4bdece20-5e99-4911-ac7c-71bf4f3958aa" />
 
+## Учебный MCP-сервер с 2 инструментами
+
+## Почему FastMCP
 
 ## Документация
 https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro
