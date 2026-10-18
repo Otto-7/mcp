@@ -57,34 +57,65 @@ flowchart LR
 
 ## Декомпозиция компонентов
 ```mermaid
-flowchart LR
-    Host["Хост"]
-    S["server.py"]
-    C["core.py"]
-    P["parser.py"]
-    N["normalizer.py"]
-    A["analyzer.py"]
-    M["models.py"]
-    CFG["config.py"]
-    LLM["LLM"]
+flowchart TD
+    subgraph External ["Внешние системы"]
+        Host["Хост (с LLM)"]
+        Svacer["Svacer API"]
+    end
 
+    subgraph MCP ["MCP-слой"]
+        S["server.py<br/>Tools & Prompts"]
+    end
+
+    subgraph Logic ["Фасад"]
+        C["core.py<br/>кэш, пагинация"]
+    end
+
+    subgraph Processing ["Модули обработки"]
+        direction LR
+        SC["svacer_client.py"]
+        P["parser.py"]
+        N["normalizer.py"]
+        A["analyzer.py"]
+    end
+
+    subgraph Base ["Базовые модули"]
+        direction LR
+        M["models.py"]
+        CFG["config.py"]
+    end
+
+    %% Связи
     Host <--> S
+    Svacer -.-> SC
+    
     S --> C
+    C --> SC
     C --> P
     C --> N
     C --> A
+    
     P -.-> M
     N -.-> M
     A -.-> M
+    
+    SC -.-> CFG
     P -.-> CFG
     N -.-> CFG
     A -.-> CFG
-    Host --> LLM
 
-    style M fill:#f0f0f0
-    style CFG fill:#f0f0f0
-    style Host fill:#e8f0ff
-    style LLM fill:#e8f0ff
+    %% Стили
+    classDef ext fill:#e8f0ff,stroke:#333
+    classDef mcp fill:#ffe4e1,stroke:#333
+    classDef logic fill:#f3e5f5,stroke:#333
+    classDef proc fill:#e8f5e9,stroke:#333
+    classDef base fill:#eeeeee,stroke:#333
+
+    class Host,Svacer ext
+    class S mcp
+    class C logic
+    class SC,P,N,A proc
+    class M,CFG base
 ```
 
 ## Потоки данных
