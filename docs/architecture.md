@@ -16,8 +16,8 @@
 
 ## 2. Состав обрабатываемых данных
 
- Входные данные: SARIF в формате JSON. ( команда `svacer sarif2 export --out-` )
- Выходные данные: Список словарей полей file, line, level, message, rule_id, trace.
+ - Входные данные: SARIF в формате JSON. ( команда `svacer sarif2 export --out-` )
+ - Выходные данные: Список словарей полей file, line, level, message, rule_id, trace.
 
 ## 3. Внутренняя модель результатов SAST
 ```json
