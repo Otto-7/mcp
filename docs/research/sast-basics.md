@@ -75,4 +75,3 @@ Finding — это одно срабатывание правила. Основ�
 ## Структура трасс в SARIF
 
 result.codeFlows[].threadFlows[].locations[].location
-
