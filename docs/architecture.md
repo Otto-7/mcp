@@ -52,7 +52,7 @@ Promts:
 
 ```mermaid
 flowchart LR
-    Svace["Svace"] --> System["MCP-сервер<br/>(обработка SARIF)"] --> LLM["LLM"]
+    Svace["Svacer"] --> System["MCP-сервер<br/>(обработка SARIF)"] --> LLM["LLM"]
 ```
 
 ## Декомпозиция компонентов
