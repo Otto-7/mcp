@@ -87,7 +87,7 @@ flowchart TD
 
     %% Связи
     Host <--> S
-    Svacer -.-> SC
+    SC -.-> Svacer
     
     S --> C
     C --> SC
