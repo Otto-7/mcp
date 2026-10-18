@@ -64,7 +64,7 @@ flowchart TD
     end
 
     subgraph MCP ["MCP-слой"]
-        S["server.py<br/>Tools & Prompts"]
+        S["server.py<br/>Tools + Prompts"]
     end
 
     subgraph Logic ["Фасад"]
