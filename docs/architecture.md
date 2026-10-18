@@ -60,7 +60,7 @@ flowchart LR
 flowchart TD
     subgraph External ["Внешние системы"]
         Host["Хост (с LLM)"]
-        Svacer["Svacer API"]
+        Svacer["Svacer"]
     end
 
     subgraph MCP ["MCP-слой"]
@@ -73,7 +73,7 @@ flowchart TD
 
     subgraph Processing ["Модули обработки"]
         direction LR
-        SC["svacer_client.py"]
+        SC["svacer_client.py (CLI)"]
         P["parser.py"]
         N["normalizer.py"]
         A["analyzer.py"]
