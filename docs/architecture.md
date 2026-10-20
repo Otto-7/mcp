@@ -22,6 +22,7 @@
 ## 3. Внутренняя модель результатов SAST
 ```json
 {
+    "finding_id": "7P6Pei16cq9IlDbvpqZ5WQ",
     "file": ".build/deflate.c",          
     "line": 287,                          
     "level": "error",                    
