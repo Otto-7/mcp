@@ -38,16 +38,27 @@
 https://modelcontextprotocol.io/specification/2025-06-18/server/tools
 
 Tools:
-1. `analyze_findings` (все/критичные)
-2. `validate_comments` (качество комментариев)
-3. `complete_findings_review` (генерация оставшихся комментариев после ревьюера)
+1. `get_summary()` — количества по severity, статусу, наличию комментария
+2. `get_results(severity, status, has_comment, rule_id, file, offset, limit)` — фильтры и пагинация
+3. `get_result(finding_id)` — подробная запись одной ошибки (+ trace и комментарии)
+4. `get_rule(rule_id)` — сведения о правиле (имя правила, описание, CWE, критичность по умолчанию)
+5. `get_source_fragment(finding_id)` — фрагмент исходных данных, контекст
 
 Promts:
-1. all_errors_audit (Все уровни ошибок)
-2. critical_errors_audit (Только критические ошибки)
-3. soft_check_comments (Проверка комментариев — Soft)
-4. hard_check_comments (Проверка комментариев — Hard)
-5. catch_up_report (Дописывание отчета)
+1. `all_errors_audit` (Все уровни ошибок)
+- Вызывает:`get_summary`,`get_results`,`get_result`,`get_rule`
+
+2. `critical_errors_audit` (Только критические ошибки)
+- Вызывает:`get_results(severity=["Critical", "Major"]`)
+
+3. `soft_check_comments` (Проверка комментариев — Soft)
+- Вызывает:`get_results(has_comment=True)`,`get_result`
+
+4. `hard_check_comments` (Проверка комментариев — Hard)
+- Вызывает:`get_results(has_comment=True)`,`get_result`
+
+5. `catch_up_report` (Допиcывание отчета)
+- Вызывает:`get_results(has_comment=False)`,`get_result`,`get_rule`
    
 ## Высокоуровневая архитектура
 
