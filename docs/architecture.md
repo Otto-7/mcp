@@ -9,16 +9,12 @@
  ## 1. Сценарии использования
  
  - Все уровни ошибок
- - Только критические ошибки (Critical/Major)
- - Проверка комментариев ревьюеров (Soft Check)
- - Проверка комментариев ревьюеров (Hard Check)
- - Дописывание LLM неоткомментированных findings.
 
 ## 2. Состав обрабатываемых данных
 
- - Входные данные: SARIF в формате JSON. ( команда `svacer sarif2 export --out-` )
- - Выходные данные: Список словарей полей file, line, level, message, rule_id, trace.
-
+ Вход: один SARIF-файл (SARIF 2.1.0, JSON). Путь — `SARIF_PATH` в `config.py`
+ Выход: findings + rules (в памяти) и итоговый отчёт `data/reports/<SOURCE_KEY>_full_audit.md`
+ 
 ## 3. Внутренняя модель результатов SAST
 ```json
 {
@@ -42,92 +38,50 @@ Tools:
 2. `get_results(severity, status, has_comment, rule_id, file, offset, limit)` — фильтры и пагинация
 3. `get_result(finding_id)` — подробная запись одной ошибки (+ trace и комментарии)
 4. `get_rule(rule_id)` — сведения о правиле (имя правила, описание, CWE, критичность по умолчанию)
-5. `get_source_fragment(finding_id)` — фрагмент исходных данных, контекст
+5. `save_reviews(records)` — вердикты LLM
 
 Promts:
-1. `all_errors_audit` (Все уровни ошибок)
-- Вызывает:`get_summary`,`get_results`,`get_result`,`get_rule`
-
-2. `critical_errors_audit` (Только критические ошибки)
-- Вызывает:`get_results(severity=["Critical", "Major"]`)
-
-3. `soft_check_comments` (Проверка комментариев — Soft)
-- Вызывает:`get_results(has_comment=True)`,`get_result`
-
-4. `hard_check_comments` (Проверка комментариев — Hard)
-- Вызывает:`get_results(has_comment=True)`,`get_result`
-
-5. `catch_up_report` (Допиcывание отчета)
-- Вызывает:`get_results(has_comment=False)`,`get_result`,`get_rule`
+1. `full_audit`
    
 ## Высокоуровневая архитектура
 
 ```mermaid
-flowchart LR
-    Svace["Svacer"] --> System["MCP-сервер<br/>(обработка SARIF)"] --> LLM["LLM"]
-```
-
-## Декомпозиция компонентов
-```mermaid
 flowchart TD
     subgraph External ["Внешние системы"]
         Host["Хост (с LLM)"]
-        Svacer["Svacer"]
+        File[("SARIF-файл<br/>data/input")]
     end
-
     subgraph MCP ["MCP-слой"]
-        S["server.py<br/>Tools + Prompts"]
+        S["server.py<br/>Tools + Prompt"]
     end
-
     subgraph Logic ["Фасад"]
         C["core.py<br/>кэш, пагинация"]
     end
-
     subgraph Processing ["Модули обработки"]
-        direction LR
-        SC["svacer_client.py (CLI)"]
         P["parser.py"]
         N["normalizer.py"]
         A["analyzer.py"]
+        RS["review_store.py"]
     end
-
     subgraph Base ["Базовые модули"]
-        direction LR
         M["models.py"]
         CFG["config.py"]
     end
-
-    %% Связи
     Host <--> S
-    SC -.-> Svacer
-    
+    P -.-> File
     S --> C
-    C --> SC
     C --> P
     C --> N
     C --> A
-    
+    C --> RS
     P -.-> M
     N -.-> M
     A -.-> M
-    
-    SC -.-> CFG
+    RS -.-> M
     P -.-> CFG
     N -.-> CFG
     A -.-> CFG
-
-    %% Стили
-    classDef ext fill:#e8f0ff,stroke:#333
-    classDef mcp fill:#ffe4e1,stroke:#333
-    classDef logic fill:#f3e5f5,stroke:#333
-    classDef proc fill:#e8f5e9,stroke:#333
-    classDef base fill:#eeeeee,stroke:#333
-
-    class Host,Svacer ext
-    class S mcp
-    class C logic
-    class SC,P,N,A proc
-    class M,CFG base
+    RS -.-> CFG
 ```
 
 ## Потоки данных
