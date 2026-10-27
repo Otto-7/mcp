@@ -90,23 +90,25 @@ flowchart TD
 1. Пользователь выбирает prompt `full_audit` в интерфейсе хоста
 2. Хост запрашивает текст prompt у `server.py` (MCP prompts/get)
 3. Хост передаёт текст LLM
-## Подготовка данных
-4.`server.py` принимает вызов, извлекает имя tool и аргументы, передаёт в `core.py`
-5.`core.py` определяет `SOURCE_KEY` из `config.py` и проверяет, загружены ли данные под этим ключом в память
-6. Если не загружены:
--`parser.load_sarif(SARIF_PATH)` открывает файл, читает его целиком как текст, парсит как JSON
--`parser.parse_sarif()` строит список Finding
--`normalizer.normalize_severity()` для каждого Finding приводит `severity` к единой шкале Critical / Major / Normal / Minor / Unknown
--`analyzer.deduplicate()`проходит по списку findings, запоминает finding_id, при повторе оставляет первый, остальные отбрасывает
--`review_store` загружается из `data/reviews/<SOURCE_KEY>.jsonl`. Читает JSONL-файл (если он есть) построчно, восстанавливает словарь finding_id → запись в памяти. Дальше каждая новая запись от save_reviews сразу дописывается в конец файла
--Кэш под `SOURCE_KEY`
-7.`core.py` выполняет операцию, соответствующую вызванному tool (фильтрация, пагинация, агрегация, запись), и возвращает результат в `server.py`
-8.`server.py` упаковывает результат в JSON и отправляет хосту
-9. LLM вызывает `get_summary()` и получает total (кол-во findings) и remaining (сколько ещё без записи в review_store)
-10. Пока remaining > 0, выполнять итерацию:               [цикл]
+
+Подготовка данных
+
+ 4.`server.py` принимает вызов, извлекает имя tool и аргументы, передаёт в `core.py`
+ 5.`core.py` определяет `SOURCE_KEY` из `config.py` и проверяет, загружены ли данные под этим ключом в память
+ 6. Если не загружены:
+  -`parser.load_sarif(SARIF_PATH)` открывает файл, читает его целиком как текст, парсит как JSON
+  -`parser.parse_sarif()` строит список Finding
+  -`normalizer.normalize_severity()` для каждого Finding приводит `severity` к единой шкале Critical / Major / Normal / Minor / Unknown
+  -`analyzer.deduplicate()`проходит по списку findings, запоминает finding_id, при повторе оставляет первый, остальные отбрасывает
+  -`review_store` загружается из `data/reviews/<SOURCE_KEY>.jsonl`. Читает JSONL-файл (если он есть) построчно, восстанавливает словарь finding_id → запись в памяти. Дальше каждая новая запись от save_reviews сразу дописывается в конец файла
+  -Кэш под `SOURCE_KEY`
+ 7.`core.py` выполняет операцию, соответствующую вызванному tool (фильтрация, пагинация, агрегация, запись), и возвращает результат в `server.py`
+ 8.`server.py` упаковывает результат в JSON и отправляет хосту
+ 9. LLM вызывает `get_summary()` и получает total (кол-во findings) и remaining (сколько ещё без записи в review_store)
+ 10. Пока remaining > 0, выполнять итерацию:               [цикл]
     10.1 `get_results(has_review=false, offset=0, limit=N)`
     10.2 при необходимости get_result / get_rule
     10.3 сформировать записи {finding_id, verdict, text}, где text — человекочитаемый анализ LLM 
     10.4 save_reviews(records) => {saved, rejected[], remaining}
-11. При remaining = 0 вызвать export_report() => {path, count, verdict_counts}
-12. LLM сообщает пользователю итог и путь к файлу
+ 11. При remaining = 0 вызвать export_report() => {path, count, verdict_counts}
+ 12. LLM сообщает пользователю итог и путь к файлу
