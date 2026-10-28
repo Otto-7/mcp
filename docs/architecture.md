@@ -19,14 +19,26 @@
 ```json
 {
     "finding_id": "7P6Pei16cq9IlDbvpqZ5WQ",
-    "file": ".build/deflate.c",          
-    "line": 287,                          
-    "level": "error",                    
-    "message": "Memory areas...",         
-    "rule_id": "SvEng.CXX.BUFFER_OVERLAP",
-    "trace": [                            
-        {"file": "...", "line": ..., "message": "..."},
-        ...
+    "file": "/.build/deflate.c",
+    "line": 287,
+    "level": "error",
+    "severity": "Critical",
+    "status": "False Positive",
+    "message": "Memory areas of 'memcpy'...",
+    "rule_id": "SvEng.CXX.BUFFER_OVERLAP/SvEng.BO.65",
+    "comments": [
+        {
+            "text": "Перекрытия не происходит...",
+            "created_by": "d.kaluh",
+            "created_ts": "2026-02-02T10:26:10.39938Z"
+        }
+    ],
+    "trace": [
+        {
+            "file": "/.build/deflate.c",
+            "line": 287,
+            "message": "function call"
+        }
     ]
 }
 ```
