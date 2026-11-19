@@ -1,25 +1,37 @@
 import json
 from config import  ALLOWED_VERDICTS, REPORTS_DIR, REVIEWS_DIR
 from datetime import datetime, timezone
+import os
+import sys
+
 
 def load(source_key: str) -> dict:
     path = REVIEWS_DIR / f"{source_key}.jsonl"
     if not path.exists():
         return {}
     store = {}
-    for line in path.read_text(encoding="utf-8").splitlines():
-        try:
-            rec = json.loads(line)
-            if not isinstance(rec, dict):
+    with path.open("r", encoding="utf-8") as file:
+        for line_number, line in enumerate(file, 1):
+            line = line.strip()
+            if not line:
                 continue
-        except json.JSONDecodeError:
-            continue
-        if fid := rec.get("finding_id"):
-            verdict = rec.get("verdict")
-            if verdict in ALLOWED_VERDICTS:
-                store[fid] = {"verdict": verdict, "text": rec.get("text", "")}
+            try:
+                rec = json.loads(line)
+                if not isinstance(rec, dict):
+                    print(f"Строка {line_number} в {path.name} не является словарем. Пропущено.",
+                          file=sys.stderr)
+                    continue
+            except json.JSONDecodeError:
+                print(f"Битый JSON в {path.name} на строке {line_number}. Пропущено.", file=sys.stderr)
+                continue
+            if fid := rec.get("finding_id"):
+                verdict = rec.get("verdict")
+                if verdict in ALLOWED_VERDICTS:
+                    store[fid] = {"verdict": verdict, "text": rec.get("text", "")}
+                else:
+                    print(f"Неверный вердикт '{verdict}' в {path.name} на строке {line_number}.",
+                          file=sys.stderr)
     return store
-
 
 def _validate(rec, findings):
     fid = rec.get("finding_id")
@@ -87,11 +99,18 @@ def export_sarif(store, original_data, source_key):
                     })
     out_path = REPORTS_DIR / f"{source_key}_reviewed.sarif"
     out_path.parent.mkdir(parents=True, exist_ok=True)
-
-    with out_path.open("w", encoding="utf-8") as f:
-        json.dump(original_data, f, ensure_ascii=False, indent=2)
-
+    tmp_path = out_path.with_suffix('.sarif.tmp')
+    try:
+        with tmp_path.open("w", encoding="utf-8") as f:
+            json.dump(original_data, f, ensure_ascii=False, indent=2)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp_path, out_path)
+    finally:
+        if tmp_path.exists():
+            tmp_path.unlink()
     return {"path": str(out_path), "count": len(store)}
+
 
 VERDICT_TO_STATUS = {
     "P0": "Undecided",
