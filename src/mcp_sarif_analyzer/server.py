@@ -17,10 +17,11 @@ def get_results(
     status: str | None = None,
     has_comment: bool | None = None,
     has_review: bool | None = None,
+    rule_id: str | None = None,
+    file: str | None = None,
     offset: int = 0,
-    limit: int = 20
-) -> dict:
-    return core.get_results(severity, status, has_comment, has_review, offset, limit)
+    limit: int = 20) -> dict:
+    return core.get_results(severity, status, has_comment, has_review, rule_id, file, offset, limit)
 
 @mcp.tool()
 def get_result(finding_id: str) -> dict:
@@ -63,7 +64,7 @@ def full_audit() -> str:
         "ПОРЯДОК ДЕЙСТВИЙ:\n"
         "1. Вызови get_summary(), чтобы узнать количество ошибок (remaining).\n"
         "2. Пока remaining > 0, вызывай get_results(has_review=false, offset=0, limit=3).\n"
-        "3. Для каждой ошибки изучи message, trace и comments. Если нужно, вызови get_rule.\n"
+        "3. Для КАЖДОЙ ошибки из списка ОБЯЗАТЕЛЬНО вызови get_result(finding_id), чтобы прочитать полные данные: trace (путь выполнения) и comments (комментарии ревьюеров). Без этого вызова анализ будет неполным. Если нужно, вызови get_rule.\n"
         "4. Присвой вердикт (P0, P1, P2, NA, FP, Need_analysis).\n"
         "5. Сформируй комментарий СТРОГО по шаблону (см. ниже).\n"
         "6. Сохрани пачку через save_reviews().\n"
