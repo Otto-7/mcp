@@ -60,71 +60,60 @@ Promts:
 
 ```mermaid
 flowchart LR
-    subgraph External ["Внешние системы"]
-        Host["Хост (с LLM)"]
-        File[("SARIF-файл<br/>data/input")]
-    end
-    subgraph MCP ["MCP-слой"]
-        S["server.py<br/>Tools + Prompt"]
-    end
-    subgraph Logic ["Фасад"]
-        C["core.py<br/>кэш, пагинация"]
-    end
-    subgraph Processing ["Модули обработки (порядок вызова)"]
-        P["parser.py<br/>load_and_parse"]
-        N["normalizer.py<br/>normalize_severity"]
-        A["analyzer.py<br/>deduplicate / filter / paginate"]
-        RS["review_store.py<br/>load / save / export_sarif"]
-    end
-    subgraph Base ["Базовые модули"]
-        M["models.py"]
-        CFG["config.py"]
-    end
+    %% Стили для узлов (чтобы было похоже на скриншот)
+    classDef default fill:#f4f5f7,stroke:#c0c0c0,stroke-width:1px,color:#333;
+    classDef db fill:#f4f5f7,stroke:#c0c0c0,stroke-width:1px,color:#333;
 
-    Host <--> S
-    File --> P
-    S --> C
+    %% Узлы
+    Host["Хост с LLM<br/>(MCP-клиент)"]
+    Server["MCP-сервер<br/>server.py"]
+    Core["Ядро обработки<br/>core.py + модули"]
+    
+    %% Базы данных (цилиндры)
+    Input[("SARIF-файл<br/>data/input")]:::db
+    Reviews[("Вердикты LLM<br/>data/reviews/*.jsonl")]:::db
+    Report[("Отчёт<br/>data/reports/*.sarif")]:::db
 
-    C --> P
-    P --> N
-    N --> A
-    A --> RS
+    %% Связи
+    Host <-->|"MCP: tools, prompt"| Server
+    Server --> Core
+    Input --> Core
+    Core --> Reviews
+    Core --> Report
 
-    P -.-> M
-    N -.-> M
-    A -.-> M
-    RS -.-> M
-
-    P -.-> CFG
-    N -.-> CFG
-    A -.-> CFG
-    RS -.-> CFG
+    %% Невидимые связи для точной расстановки (как на картинке)
+    %% Они заставляют Input оказаться под Host, а Reviews над Report
+    Host ~~~ Input
+    Reviews ~~~ Report
 ```
 
 ## Потоки данных
 
-1. Пользователь выбирает prompt `full_audit` в интерфейсе хоста
-2. Хост запрашивает текст prompt у `server.py` (MCP prompts/get)
-3. Хост передаёт текст LLM
+### Фаза 0. Запуск сценария
 
-**Подготовка данных**
+1. Пользователь выбирает prompt `full_audit` в интерфейсе хоста.
+2. Хост запрашивает текст prompt у `server.py` (MCP `prompts/get`) и передаёт его LLM.
 
-4. `server.py` принимает вызов, извлекает имя tool и аргументы, передаёт в `core.py`
-5. `core.py` определяет `SOURCE_KEY` из `config.py` и проверяет, загружены ли данные под этим ключом в память
-6. Если не загружены:
-   - `parser.load_sarif(SARIF_PATH)` открывает файл, читает его целиком как текст, парсит как JSON
-   - `parser.parse_sarif()` строит список Finding
-   - `normalizer.normalize_severity()` для каждого Finding приводит `severity` к единой шкале Critical / Major / Normal / Minor / Unknown
-   - `analyzer.deduplicate()`проходит по списку findings, запоминает finding_id, при повторе оставляет первый, остальные отбрасывает
-   - `review_store` загружается из `data/reviews/<SOURCE_KEY>.jsonl`. Читает JSONL-файл (если он есть) построчно, восстанавливает словарь finding_id → запись в памяти. Дальше каждая новая запись от save_reviews сразу дописывается в конец файла
-   - Кэш под `SOURCE_KEY`
-7. `core.py` выполняет операцию, соответствующую вызванному tool (фильтрация, пагинация, агрегация, запись), и возвращает результат в `server.py`
-8. `server.py` упаковывает результат в JSON и отправляет хосту
-9. LLM вызывает `get_summary()` и получает total (кол-во findings) и remaining (сколько ещё без записи в review_store)
-10. Пока remaining > 0, выполнять итерацию:              
-    10.1 `get_results(has_review=false, offset=0, limit=N)`  
-    10.2 при необходимости get_result / get_rule  
-    10.3 сформировать записи {finding_id, verdict, text}, где text — человекочитаемый анализ LLM  
-    10.4 save_reviews(records) => {saved, rejected[], remaining}
-11. При remaining = 0 вызвать export_report() => {path, count, verdict_counts}
-12. LLM сообщает пользователю итог и путь к файлу
+### Фаза 1. Инициализация данных (при первом вызове любого tool)
+
+3. LLM вызывает tool. `server.py` извлекает имя tool и аргументы и передаёт их в `core.py`.
+4. `core.py` берет путь к SARIF-файлу из config.SARIF_PATH, отрезает у него расширение с помощью .stem, и использует его как ключ source_key для проверки кэша. Если данные уже загружены, происходит переход к п. 9.
+5. `parser.load_sarif(SARIF_PATH)` читает файл как текст и парсит JSON. `parser.parse_sarif()` возвращает кортеж: список `Finding` и словарь `rules`.
+6. `normalizer.normalize_severity()` для каждого `Finding` подставляет `severity` из правила, если текущее значение пустое или `Unknown`.
+7. `analyzer.deduplicate()` оставляет первое вхождение каждого `finding_id`, повторы отбрасывает.
+8. `review_store.load()` читает `data/reviews/<SOURCE_KEY>.jsonl` (если есть) и восстанавливает словарь `finding_id → запись`. Готовые данные кэшируются в памяти.
+9. `core.py` выполняет операцию вызванного tool. `server.py` возвращает результат, который FastMCP упаковывает в JSON и отправляет хосту.
+
+### Фаза 2. Классификация ошибок
+
+10. LLM вызывает `get_summary()` и получает `total` и `remaining` (сколько findings ещё без записи в `review_store`).
+11. Пока `remaining > 0`, выполнять итерацию:
+    1. Вызвать `get_results(has_review=false, offset=0, limit=N)`.
+    2. При необходимости вызвать `get_result(finding_id)` и `get_rule(rule_id)` для полного контекста.
+    3. LLM формирует записи `{finding_id, verdict, text}`, где `text` — человекочитаемый анализ по шаблону.
+    4. Вызвать `save_reviews(records)`. Функция валидирует записи, дописывает их в `.jsonl` и в память, возвращая `{saved, rejected[], remaining}`.
+
+### Фаза 3. Итог
+
+12. При `remaining = 0` LLM вызывает `export_sarif()`. Отчёт собирается из `review_store` и исходного SARIF, обогащается статусами и комментариями LLM и пишется в `data/reports/<SOURCE_KEY>_reviewed.sarif`. Результат: `{path, count}`.
+13. Сгенерированный файл data/reports/<SOURCE_KEY>_reviewed.sarif готов к импортированию в Svacer.
