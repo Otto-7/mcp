@@ -46,13 +46,12 @@
 https://modelcontextprotocol.io/specification/2025-06-18/server/tools
 
 Tools:
-1. `get_summary()` — количества по severity, статусу, наличию комментария
+1. `get_summary()` — общее число findings (`total`), сколько осталось без вердикта (`remaining`), распределение по severity и по статусу.
 2. `get_results(severity, status, has_comment, has_review, rule_id, file, offset, limit)` — страница findings с фильтрами и пагинацией
 3. `get_result(finding_id)` — подробная запись одной ошибки (+ trace и комментарии)
 4. `get_rule(rule_id)` — сведения о правиле (имя правила, описание, CWE, критичность по умолчанию)
 5. `save_reviews(records)` — вердикты LLM
-6. `export_report()` — итоговый .md-отчёт из записей review_store и данных findings (finding_id, file, line, rule_id, severity, verdict, text)
-
+6. `export_sarif()` — итоговый SARIF-файл. Возвращает `{path, count}
 Promts:
 1. `full_audit`
    
