@@ -85,18 +85,17 @@ def export_sarif(store, original_data, source_key):
             fid = (result.get("fingerprints") or {}).get("invariant")
             if fid and fid in store:
                 rec = store[fid]
+
                 props = result.setdefault("properties", {})
                 props["status"] = VERDICT_TO_STATUS.get(rec["verdict"], "Undecided")
                 comments_list = props.setdefault("comments", [])
                 now_ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-                if comments_list:
-                    comments_list[0]["text"] += f"\n\n[LLM]: {rec['text']}"
-                else:
-                    comments_list.append({
-                        "text": f"[LLM]: {rec['text']}",
-                        "createdBy": "LLM",
-                        "createTs": now_ts
-                    })
+                comments_list.append({
+                    "text": f"[LLM]: {rec['text']}",
+                    "createdBy": "LLM",
+                    "createTs": now_ts
+                })
+
     out_path = REPORTS_DIR / f"{source_key}_reviewed.sarif"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     tmp_path = out_path.with_suffix('.sarif.tmp')
