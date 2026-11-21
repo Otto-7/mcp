@@ -10,11 +10,11 @@ MCP-сервер для автоматизированной обработки 
 
 ## Быстрый старт
 ```bash
-# Клонируйте репозиторий
+# Клонирование репозитория
 git clone https://github.com/Otto-7/mcp/tree/develop
 cd MCP-security-server
 
-# Создайте и активируйте виртуальное окружение
+# Создание окружения
 python -m venv .venv
 
 # Для Windows:
@@ -22,7 +22,7 @@ python -m venv .venv
 # Для Linux/macOS:
 source .venv/bin/activate
 
-# Установите зависимости
+# Установка зависимостей
 pip install fastmcp
 
 # Запуск сервера через терминал 
