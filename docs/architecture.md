@@ -59,7 +59,7 @@ Promts:
 ## Высокоуровневая архитектура
 
 ```mermaid
-flowchart TD
+flowchart LR
     subgraph External ["Внешние системы"]
         Host["Хост (с LLM)"]
         File[("SARIF-файл<br/>data/input")]
@@ -70,27 +70,31 @@ flowchart TD
     subgraph Logic ["Фасад"]
         C["core.py<br/>кэш, пагинация"]
     end
-    subgraph Processing ["Модули обработки"]
-        P["parser.py"]
-        N["normalizer.py"]
-        A["analyzer.py"]
-        RS["review_store.py"]
+    subgraph Processing ["Модули обработки (порядок вызова)"]
+        P["parser.py<br/>load_and_parse"]
+        N["normalizer.py<br/>normalize_severity"]
+        A["analyzer.py<br/>deduplicate / filter / paginate"]
+        RS["review_store.py<br/>load / save / export_sarif"]
     end
     subgraph Base ["Базовые модули"]
         M["models.py"]
         CFG["config.py"]
     end
+
     Host <--> S
-    P -.-> File
+    File --> P
     S --> C
+
     C --> P
-    C --> N
-    C --> A
-    C --> RS
+    P --> N
+    N --> A
+    A --> RS
+
     P -.-> M
     N -.-> M
     A -.-> M
     RS -.-> M
+
     P -.-> CFG
     N -.-> CFG
     A -.-> CFG
