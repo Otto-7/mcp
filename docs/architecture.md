@@ -12,8 +12,8 @@
 
 ## 2. Состав обрабатываемых данных
 
- Вход: один SARIF-файл (SARIF 2.1.0, JSON). Путь — `SARIF_PATH` в `config.py`
- Выход: findings + rules (в памяти) и итоговый отчёт `data/reports/<SOURCE_KEY>_full_audit.md`
+ Вход: один SARIF-файл (SARIF 2.1.0, JSON). Путь — `SARIF_PATH` в `config.py`\
+ Выход: findings + rules (в памяти) и итоговый SARIF-файл
  
 ## 3. Внутренняя модель результатов SAST
 ```json
