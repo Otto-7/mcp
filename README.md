@@ -11,13 +11,13 @@ MCP-сервер для автоматизированной обработки 
 ## Быстрый старт
 ```bash
 # Клонирование репозитория
-git clone https://github.com/Otto-7/mcp/tree/develop
+git clone -b develop https://github.com/Otto-7/mcp.git
 cd MCP-security-server
 
 # Создание окружения
 python -m venv .venv
 
-# Для Windows:
+# Активация для Windows:
 .venv\Scripts\activate
 # Для Linux/macOS:
 source .venv/bin/activate
