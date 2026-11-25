@@ -14,7 +14,7 @@ MCP-сервер для автоматизированной обработки 
 git clone -b develop https://github.com/Otto-7/mcp.git
 cd MCP-security-server
 
-# Создание окружения
+# Создание окружения в папке с кодом
 python -m venv .venv
 
 # Активация для Windows:
@@ -31,6 +31,19 @@ python server.py --sarif data/input/имя_файла.sarif
 python server.py --sarif data/input/zlib-git-master-09a1572.sarif
 ```
 ## Подключение к LLM
+```bash
+# Путь
+pwd [home/user/mcp]
+# Регистрация сервера
+codex mcp add [NAME MCP] -- /[home/user/mcp]/.venv/bin/python /home/user/mcp/Server.py --sarif /home/user/mcp/data/input/zlib-git-master-09a1572.sarif
+# Проверка регистрации
+codex mcp list
+# Запуск
+codex
+# Проверить, что нейросеть видит сервер
+/mcp
+# Вставить промт
+```
 
 ## Документация
 
