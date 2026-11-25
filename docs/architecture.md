@@ -50,26 +50,27 @@ Promts:
 ## Высокоуровневая архитектура
 
 ```mermaid
-flowchart LR
-    classDef default fill:#f4f5f7,stroke:#c0c0c0,stroke-width:1px,color:#333;
-    classDef db fill:#f4f5f7,stroke:#c0c0c0,stroke-width:1px,color:#333;
+graph LR
+    %% Стили
+    classDef host fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef app fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef db fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
 
-    Host["Хост с LLM<br/>(MCP-клиент)"]
-    Server["MCP-сервер<br/>server.py"]
-    Core["Ядро обработки<br/>core.py + модули"]
+    %% Узлы
+    Host["Хост с LLM<br/>(MCP-клиент)"]:::host
+    Server["MCP-сервер<br/>server.py"]:::app
+    Core["Ядро обработки<br/>core.py (фасад) +<br/>parser, normalizer,<br/>analyzer, review_store"]:::app
     
-    Input[("SARIF-файл<br/>data/input")]:::db
-    Reviews[("Вердикты LLM<br/>data/reviews/*.jsonl")]:::db
+    SARIF[("SARIF-файл<br/>data/input")]:::db
+    Verdicts[("Вердикты LLM<br/>data/reviews/*.jsonl")]:::db
     Report[("Отчёт<br/>data/reports/*.sarif")]:::db
 
-    Host <-->|"MCP: tools, prompt"| Server
+    %% Связи
+    Host -- "MCP (stdio):<br/>tools, prompt" --> Server
     Server --> Core
-    Input --> Core
-    Core --> Reviews
-    Core --> Report
-
-    Host ~~~ Input
-    Reviews ~~~ Report
+    SARIF -- "чтение" --> Core
+    Core -- "чтение / дозапись" --> Verdicts
+    Core -- "экспорт:<br/>Input + Reviews" --> Report
 ```
 
 ## Потоки данных
