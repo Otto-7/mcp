@@ -57,7 +57,7 @@ graph LR
 
     Host["Хост с LLM<br/>(MCP-клиент)"]:::host
     Server["MCP-сервер<br/>server.py"]:::app
-    Core["Ядро обработки<br/>core.py +<br/>parser, normalizer,<br/>analyzer, review_store"]:::app
+    Core["Ядро обработки<br/>core.py"]:::app
     
     SARIF[("SARIF-файл<br/>data/input")]:::db
     Verdicts[("Вердикты LLM<br/>data/reviews/*.jsonl")]:::db
