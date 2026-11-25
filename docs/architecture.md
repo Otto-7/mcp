@@ -66,7 +66,7 @@ graph LR
     Host -- "MCP (stdio):<br/>tools, prompt" --> Server
     Server --> Core
     
-    Core <-- "чтение (load_sarif)" --> SARIF
+    Core <-- "чтение (load_sarif)" -- SARIF
     
     Core <-- "чтение / дозапись" --> Verdicts
     
