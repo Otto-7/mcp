@@ -33,6 +33,7 @@ def load(source_key: str) -> dict:
                           file=sys.stderr)
     return store
 
+
 def _validate(rec, findings):
     fid = rec.get("finding_id")
     if not fid:
@@ -42,9 +43,10 @@ def _validate(rec, findings):
     verdict = rec.get("verdict")
     if verdict not in ALLOWED_VERDICTS:
         return f"invalid verdict: {verdict!r}"
-    if not (rec.get("text") or "").strip():
-        return "empty text"
+    if verdict in ("P0", "P1") and not (rec.get("text") or "").strip():
+        return f"text required for verdict {verdict}"
     return None
+
 
 def _append_to_file(source_key, records):
     path = REVIEWS_DIR / f"{source_key}.jsonl"
@@ -56,12 +58,13 @@ def _append_to_file(source_key, records):
                     {
                         "finding_id": rec["finding_id"],
                         "verdict": rec["verdict"],
-                        "text": rec["text"],
+                         "text": rec.get("text", ""),
                     },
                     ensure_ascii=False,
                 )
                 + "\n"
             )
+
 
 def save(store, records, findings, source_key):
     valid = []
@@ -85,13 +88,21 @@ def export_sarif(store, original_data, source_key):
             fid = (result.get("fingerprints") or {}).get("invariant")
             if fid and fid in store:
                 rec = store[fid]
-
                 props = result.setdefault("properties", {})
-                props["status"] = VERDICT_TO_STATUS.get(rec["verdict"], "Undecided")
+
+                if not props.get("status"):
+                    props["status"] = VERDICT_TO_STATUS.get(rec["verdict"], "Undecided")
+
                 comments_list = props.setdefault("comments", [])
+
+                comment_text = f"[LLM Вердикт: {rec['verdict']}]"
+
+                if (rec.get("text") or "").strip():
+                    comment_text += f": {rec['text']}"
+
                 now_ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
                 comments_list.append({
-                    "text": f"[LLM]: {rec['text']}",
+                    "text": comment_text,
                     "createdBy": "LLM",
                     "createTs": now_ts
                 })
