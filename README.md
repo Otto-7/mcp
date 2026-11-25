@@ -26,7 +26,9 @@ source .venv/bin/activate
 pip install fastmcp
 
 # Запуск сервера через терминал 
-python Server.py --sarif data/input/имя_файла.sarif
+python server.py --sarif data/input/имя_файла.sarif
+# Тестовый файл
+python server.py --sarif data/input/zlib-git-master-09a1572.sarif
 ```
 ## Подключение к LLM
 
