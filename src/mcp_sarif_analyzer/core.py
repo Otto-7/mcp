@@ -87,8 +87,6 @@ def save_reviews(records):
     result["remaining"] = remaining
     return result
 
-
-
 def export_sarif_report():
     _load_data()
     original_data = load_sarif(config.SARIF_PATH)
