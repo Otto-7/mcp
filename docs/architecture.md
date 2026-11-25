@@ -51,29 +51,23 @@ Promts:
 
 ```mermaid
 flowchart LR
-    %% Стили для узлов (чтобы было похоже на скриншот)
     classDef default fill:#f4f5f7,stroke:#c0c0c0,stroke-width:1px,color:#333;
     classDef db fill:#f4f5f7,stroke:#c0c0c0,stroke-width:1px,color:#333;
 
-    %% Узлы
     Host["Хост с LLM<br/>(MCP-клиент)"]
     Server["MCP-сервер<br/>server.py"]
     Core["Ядро обработки<br/>core.py + модули"]
     
-    %% Базы данных (цилиндры)
     Input[("SARIF-файл<br/>data/input")]:::db
     Reviews[("Вердикты LLM<br/>data/reviews/*.jsonl")]:::db
     Report[("Отчёт<br/>data/reports/*.sarif")]:::db
 
-    %% Связи
     Host <-->|"MCP: tools, prompt"| Server
     Server --> Core
     Input --> Core
     Core --> Reviews
     Core --> Report
 
-    %% Невидимые связи для точной расстановки (как на картинке)
-    %% Они заставляют Input оказаться под Host, а Reviews над Report
     Host ~~~ Input
     Reviews ~~~ Report
 ```
