@@ -51,25 +51,25 @@ Promts:
 
 ```mermaid
 graph LR
-    %% Стили
     classDef host fill:#f9f9f9,stroke:#333,stroke-width:2px;
     classDef app fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
     classDef db fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
 
-    %% Узлы
     Host["Хост с LLM<br/>(MCP-клиент)"]:::host
     Server["MCP-сервер<br/>server.py"]:::app
-    Core["Ядро обработки<br/>core.py (фасад) +<br/>parser, normalizer,<br/>analyzer, review_store"]:::app
+    Core["Ядро обработки<br/>core.py +<br/>parser, normalizer,<br/>analyzer, review_store"]:::app
     
     SARIF[("SARIF-файл<br/>data/input")]:::db
     Verdicts[("Вердикты LLM<br/>data/reviews/*.jsonl")]:::db
     Report[("Отчёт<br/>data/reports/*.sarif")]:::db
 
-    %% Связи
     Host -- "MCP (stdio):<br/>tools, prompt" --> Server
     Server --> Core
-    SARIF -- "чтение" --> Core
-    Core -- "чтение / дозапись" --> Verdicts
+    
+    Core <-- "чтение (load_sarif)" --> SARIF
+    
+    Core <-- "чтение / дозапись" --> Verdicts
+    
     Core -- "экспорт:<br/>Input + Reviews" --> Report
 ```
 
