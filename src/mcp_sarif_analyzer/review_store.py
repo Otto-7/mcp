@@ -88,25 +88,24 @@ def export_sarif(store, original_data, source_key):
             fid = (result.get("fingerprints") or {}).get("invariant")
             if fid and fid in store:
                 rec = store[fid]
-                props = result.setdefault("properties", {})
 
-                if not props.get("status"):
-                    props["status"] = VERDICT_TO_STATUS.get(rec["verdict"], "Undecided")
+                props = result.setdefault("properties", {})
+                now_ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+                if not props.get("status") or props.get("status") == "Undecided":
+
+                    props["status"] = MARKER_STATUS
+
+                    sev = VERDICT_TO_SEVERITY.get(rec["verdict"]) # svacer должен разблокировать это поле после выставления unclear
+                    if sev:
+                        props["severity"] = sev
 
                 comments_list = props.setdefault("comments", [])
-
-                comment_text = f"[LLM Вердикт: {rec['verdict']}]"
-
-                if (rec.get("text") or "").strip():
-                    comment_text += f": {rec['text']}"
-
-                now_ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
                 comments_list.append({
-                    "text": comment_text,
+                    "text": f"[LLM Вердикт: {rec['verdict']}]: {rec['text']}",
                     "createdBy": "LLM",
                     "createTs": now_ts
                 })
-
     out_path = REPORTS_DIR / f"{source_key}_reviewed.sarif"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     tmp_path = out_path.with_suffix('.sarif.tmp')
@@ -122,11 +121,9 @@ def export_sarif(store, original_data, source_key):
     return {"path": str(out_path), "count": len(store)}
 
 
-VERDICT_TO_STATUS = {
-    "P0": "Undecided",
-    "P1": "Undecided",
-    "P2": "Undecided",
-    "NA": "Not Applicable",
-    "FP": "False Positive",
-    "Need_analysis": "Undecided"
+MARKER_STATUS = "Unclear"
+VERDICT_TO_SEVERITY = {
+    "P0": "Critical",
+    "P1": "Major",
+    "P2": "Minor"
 }
